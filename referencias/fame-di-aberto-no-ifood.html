@@ -1,0 +1,173 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Poppins,sans-serif;color:#1c2b45}
+.abs{position:absolute}.scene{position:absolute;inset:0;opacity:0}
+.serif{font-family:Lora,serif;font-weight:500}.center{left:0;right:0;text-align:center}
+.kick{font-size:30px;letter-spacing:.36em;text-transform:uppercase;color:#a8842a;font-weight:500;padding-left:.36em}
+.ln{overflow:hidden;display:block;padding-bottom:.1em}.ln>span{display:inline-block}
+.gold{background:linear-gradient(100deg,#8a6b1f 0%,#b8912a 30%,#e6c86e 48%,#b8912a 66%,#8a6b1f 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.tri{position:absolute;height:6px;display:flex;border-radius:3px;overflow:hidden}
+.tri i{flex:1;display:block}.tri i:nth-child(1){background:#2f8a4f}.tri i:nth-child(2){background:#fffdf8;box-shadow:inset 0 0 0 1.5px #ddd0b8}.tri i:nth-child(3){background:#cc3a2f}
+#signwrap{position:absolute;left:50%;top:560px;width:640px;margin-left:-320px;height:560px;transform-origin:50% 0;perspective:1600px}
+.face{position:absolute;left:0;top:200px;width:640px;height:340px;border-radius:26px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 30px 60px rgba(28,43,69,.25)}
+.face.f{background:#e9e1d2;border:4px solid #cbbd9f;color:#9c917d}
+.face.b{background:#1c2b45;border:4px solid #b8912a;transform:rotateY(180deg)}
+.face .t{font-family:Lora,serif;font-size:130px;font-weight:600;letter-spacing:.06em;line-height:1}
+.face .s{font-size:28px;letter-spacing:.4em;text-transform:uppercase;margin-top:18px}
+#card{position:absolute;left:0;top:0;width:640px;height:560px;transform-style:preserve-3d}
+.opt{position:absolute;top:900px;width:400px;text-align:center}
+.opt .ic{width:220px;height:220px;margin:0 auto;border-radius:50%;background:#fff;box-shadow:0 20px 50px rgba(60,40,20,.14);display:flex;align-items:center;justify-content:center;border:2px solid rgba(184,145,42,.35)}
+.ic2{height:440px;display:flex;align-items:flex-end;justify-content:center}
+.stp{width:250px;text-align:center}.stp b{display:flex;margin:0 auto 14px;width:84px;height:84px;border-radius:50%;background:#1c2b45;color:#e6c86e;font-family:Lora;font-size:44px;font-weight:500;align-items:center;justify-content:center}.stp span{font-size:34px;line-height:1.25;color:#1c2b45}
+.opt h4{font-family:Lora,serif;font-size:56px;font-weight:500;margin-top:34px}
+.opt p{font-size:30px;color:#6b6152;font-weight:300;margin-top:6px}
+.cta{position:absolute;left:50%;padding:34px 70px;border-radius:999px;background:#1c2b45;color:#f6efdc;font-size:38px;letter-spacing:.14em;font-weight:500;white-space:nowrap;overflow:hidden;box-shadow:0 18px 50px rgba(28,43,69,.28)}
+.cta .sh{position:absolute;top:0;bottom:0;width:160px;background:linear-gradient(100deg,transparent,rgba(255,240,200,.3),transparent);transform:skewX(-20deg)}
+</style></head><body>
+<div id="stage">
+ <div class="abs" style="inset:0;background:linear-gradient(180deg,#fbf6ec 0%,#f5ede0 55%,#ede2d0 100%)"></div>
+ <div class="abs" id="glow" style="width:1400px;height:1400px;border-radius:50%;background:radial-gradient(circle,rgba(230,190,110,.28),rgba(230,190,110,0) 60%)"></div>
+ <div class="abs" style="inset:44px;border:1.5px solid rgba(184,145,42,.32)"></div>
+
+ <!-- toldo -->
+ <svg id="awning" class="abs" style="left:0;top:0" width="1080" height="330" viewBox="0 0 1080 330"></svg>
+
+ <!-- logo global (fica acima de tudo) -->
+ <!-- S1 placa -->
+ <div class="scene" id="s1">
+  <svg class="abs" id="strings" style="left:0;top:0" width="1080" height="900"><g id="strg"></g></svg>
+  <div class="abs" style="left:531px;top:545px;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f0d68a,#8a6b1f)"></div>
+  <div id="signwrap"><div id="card">
+   <svg class="abs" style="left:0;top:0" width="640" height="210"><path d="M320 10 L90 205 M320 10 L550 205" stroke="#8a6b1f" stroke-width="4" fill="none"/></svg>
+   <div class="face f"><div class="t">FECHADO</div><div class="s">volte mais tarde</div></div>
+   <div class="face b" style="flex-direction:row;gap:26px"><img src="img/logo.png" style="width:160px"><div style="text-align:left"><div class="t gold" style="font-size:90px;letter-spacing:.03em">ABERTO</div><div class="s" style="color:#f6efdc;margin-top:12px">peça já</div></div></div>
+  </div></div>
+  <div class="abs center serif" style="top:1200px;font-size:104px;line-height:1.1"><span class="ln"><span id="a1">Estamos abertos</span></span><span class="ln"><span id="a2">no <i class="gold">iFood!</i></span></span></div>
+  <div class="tri" id="tri1" style="top:1470px;left:420px;width:240px"><i></i><i></i><i></i></div>
+ </div>
+
+ <!-- S2 piadina -->
+ <div class="scene" id="s2">
+  <div class="abs center kick" style="top:400px"><span class="ln"><span id="b0">Fame Di Piadinas</span></span></div>
+  <div class="abs center serif" style="top:460px;font-size:90px;line-height:1.12"><span class="ln"><span id="b1">Piadina <i class="gold">quentinha</i></span></span><span class="ln"><span id="b2">na porta da sua casa</span></span></div>
+  <svg id="piad" class="abs" style="left:140px;top:760px" width="800" height="640" viewBox="0 0 800 640">
+   <defs><linearGradient id="dough" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e2b0"/><stop offset="1" stop-color="#e4bc72"/></linearGradient>
+   <radialGradient id="plate" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffffff"/><stop offset=".8" stop-color="#f3ede2"/><stop offset="1" stop-color="#e2d7c3"/></radialGradient></defs>
+   <ellipse cx="400" cy="520" rx="370" ry="95" fill="url(#plate)" stroke="#d8ccb4" stroke-width="2"/>
+   <ellipse cx="400" cy="520" rx="300" ry="68" fill="none" stroke="#e6dccb" stroke-width="2"/>
+   <path d="M118 478 Q400 520 682 478 L678 502 Q400 548 122 502 Z" fill="#e0b56a" stroke="#c99a52" stroke-width="2"/>
+   <g id="fill">
+    <path d="M150 482 Q400 515 650 482 L650 470 Q400 500 150 470 Z" fill="#fff3d0"/>
+    <path d="M160 474 q30 -36 60 -6 q30 -38 60 -4 q30 -36 60 -4 q30 -38 60 -4 q30 -36 60 -4 q30 -38 60 -4 q25 -18 50 2 Q400 505 160 474 Z" fill="#d9483b"/>
+    <path d="M150 462 q25 -50 55 -14 q25 -54 55 -10 q28 -52 58 -10 q26 -54 56 -10 q28 -52 58 -10 q26 -54 56 -10 q28 -50 56 -8 q20 -20 36 6 Q400 492 150 462 Z" fill="#6aa84f"/>
+   </g>
+   <path id="top" d="M128 462 C140 350 280 290 400 290 C520 290 660 350 672 462 Q400 392 128 462 Z" fill="url(#dough)" stroke="#d3a95e" stroke-width="3"/>
+   <g id="spots" fill="#b87a3a" opacity=".45"></g>
+   <g id="steam" fill="none" stroke="#c9b89a" stroke-width="8" stroke-linecap="round">
+    <path id="st0" d="M320 270 q-25 -40 0 -80 q25 -40 0 -80"/><path id="st1" d="M400 250 q-25 -40 0 -80 q25 -40 0 -80"/><path id="st2" d="M480 270 q-25 -40 0 -80 q25 -40 0 -80"/></g>
+  </svg>
+ </div>
+
+ <!-- S3 opcoes -->
+ <div class="scene" id="s3">
+  <div class="abs center kick" style="top:420px"><span class="ln"><span id="c0">Só delivery</span></span></div>
+  <div class="abs center serif" style="top:480px;font-size:96px;line-height:1.12"><span class="ln"><span id="c1">Pediu,</span></span><span class="ln"><span id="c2"><i class="gold">chegou.</i></span></span></div>
+  <div class="opt" id="o2" style="left:90px;width:900px;top:720px"><div class="ic2"><svg width="620" height="423" viewBox="0 0 220 150" style="overflow:visible">
+ <g id="speed" stroke="#b8912a" stroke-width="3" stroke-linecap="round"><line x1="-40" y1="60" x2="-5" y2="60"/><line x1="-55" y1="82" x2="-12" y2="82"/><line x1="-35" y1="104" x2="-2" y2="104"/></g>
+ <g id="puffs" fill="#d9cfbd"><circle id="pf0" cx="20" cy="108" r="6"/><circle id="pf1" cx="20" cy="108" r="5"/></g>
+ <ellipse cx="112" cy="139" rx="92" ry="5" fill="#3c2d14" opacity=".15"/>
+ <path id="beam" d="M176 48 L230 34 L230 66 Z" fill="#f3d98a" opacity=".35"/>
+ <g id="mbody">
+ <rect x="22" y="104" width="34" height="6" rx="3" fill="#9aa3b2"/>
+ <path d="M30 100 C28 74 55 64 92 68 L122 72 L120 100 Z" fill="#1c2b45"/>
+ <path d="M36 84 C45 74 70 72 100 76" stroke="#b8912a" stroke-width="2.5" fill="none"/>
+ <rect x="92" y="92" width="52" height="9" rx="3" fill="#1c2b45"/>
+ <path d="M136 100 L150 52 L161 52 L163 60 L151 100 Z" fill="#1c2b45"/>
+ <path d="M146 104 Q170 80 194 104" stroke="#1c2b45" stroke-width="9" fill="none" stroke-linecap="round"/>
+ <line x1="158" y1="54" x2="172" y2="116" stroke="#9aa3b2" stroke-width="5"/>
+ <line x1="146" y1="46" x2="172" y2="40" stroke="#1c2b45" stroke-width="5" stroke-linecap="round"/>
+ <circle cx="170" cy="50" r="7" fill="#e6c86e" stroke="#b8912a" stroke-width="1.5"/><line x1="150" y1="45" x2="146" y2="32" stroke="#9aa3b2" stroke-width="2"/><ellipse cx="145" cy="30" rx="5" ry="3.5" fill="#1c2b45"/><path d="M140 62 L154 58" stroke="#b8912a" stroke-width="2.5"/><path d="M150 102 Q170 84 190 102" stroke="#b8912a" stroke-width="1.6" fill="none"/>
+ <path d="M48 70 Q75 58 106 64 L105 71 Q76 66 50 76 Z" fill="#6b4a2a"/>
+ <rect x="30" y="64" width="44" height="4" fill="#9aa3b2"/>
+ <rect x="16" y="20" width="66" height="46" rx="7" fill="#fbf6ec" stroke="#b8912a" stroke-width="3"/>
+ <image href="img/logo.png" x="29" y="22" width="42" height="40"/>
+ </g>
+ <g transform="translate(55 116)"><circle r="21" fill="#1c2b45"/><circle r="13" fill="#e9e1d2"/><g id="sp0" stroke="#1c2b45" stroke-width="2"><line x1="0" y1="0" x2="13.0" y2="0.0"/><line x1="0" y1="0" x2="6.5" y2="11.3"/><line x1="0" y1="0" x2="-6.5" y2="11.3"/><line x1="0" y1="0" x2="-13.0" y2="-0.0"/><line x1="0" y1="0" x2="-6.5" y2="-11.3"/><line x1="0" y1="0" x2="6.5" y2="-11.3"/></g><circle r="4" fill="#b8912a"/></g><g transform="translate(172 116)"><circle r="21" fill="#1c2b45"/><circle r="13" fill="#e9e1d2"/><g id="sp1" stroke="#1c2b45" stroke-width="2"><line x1="0" y1="0" x2="13.0" y2="0.0"/><line x1="0" y1="0" x2="6.5" y2="11.3"/><line x1="0" y1="0" x2="-6.5" y2="11.3"/><line x1="0" y1="0" x2="-13.0" y2="-0.0"/><line x1="0" y1="0" x2="-6.5" y2="-11.3"/><line x1="0" y1="0" x2="6.5" y2="-11.3"/></g><circle r="4" fill="#b8912a"/></g>
+</svg></div><div id="steps" style="display:flex;justify-content:center;gap:30px;margin-top:50px">
+   <div class="stp"><b>1</b><span>Abra o<br>iFood</span></div><div class="stp"><b>2</b><span>Busque<br>Fame Di</span></div><div class="stp"><b>3</b><span>Receba<br>em casa</span></div></div></div>
+  <img id="ifl" class="abs" src="img/ifood.png" style="left:50%;top:1440px;width:230px;margin-left:-115px">
+ </div>
+
+ <!-- S4 final -->
+ <div class="scene" id="s4">
+  
+  <div class="abs center serif" style="top:960px;font-size:78px;line-height:1.15"><span class="ln"><span id="e1">Bateu a fome?</span></span></div>
+  <div class="tri" id="tri4" style="top:1075px;left:440px;width:200px"><i></i><i></i><i></i></div>
+  <div class="cta" id="cta" style="top:1130px">PEÇA AGORA NO IFOOD<div class="sh" id="ctash"></div></div>
+  <div class="abs center kick" style="top:1290px;font-size:28px;color:#6b6152"><span class="ln"><span id="e2">Busque por Fame Di<br><span style="letter-spacing:.2em;font-size:26px">@famedi.sorocaba</span></span></span></div>
+ </div>
+ <img id="logo" class="abs" src="img/logo.png" style="left:0;top:0;width:520px;transform-origin:0 0;z-index:20">
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const eBack=p=>{const c=1.3,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+const eBounce=p=>{const n=7.5625,d=2.75;if(p<1/d)return n*p*p;if(p<2/d)return n*(p-=1.5/d)*p+.75;if(p<2.5/d)return n*(p-=2.25/d)*p+.9375;return n*(p-=2.625/d)*p+.984375};
+const lerp=(a,b,p)=>a+(b-a)*p;
+const S=[['s1',0,4.6],['s2',4.6,8.8],['s3',8.8,13],['s4',13,16]];
+// toldo: listras + recortes
+(()=>{const g=$('awning');const n=12,w=1080/n;let h='<defs><linearGradient id="aw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset=".25" stop-color="#000" stop-opacity="0"/></linearGradient></defs><g id="awg">';
+ for(let i=0;i<n;i++){const c=i%2?'#fbf6ec':'#1c2b45';const x=i*w;
+  h+=`<path d="M${x} 0 H${x+w} V250 Q${x+w/2} 318 ${x} 250 Z" fill="${c}"/>`;}
+ h+=`<rect x="0" y="0" width="1080" height="250" fill="url(#aw)"/><path d="M0 250 ${[...Array(n)].map((_,i)=>`Q${i*w+w/2} 318 ${(i+1)*w} 250`).join(' ')}" fill="none" stroke="#b8912a" stroke-width="5"/><rect x="0" y="0" width="1080" height="14" fill="#b8912a"/></g>`;g.innerHTML=h;})();
+// manchas da massa
+(()=>{let s=5;const r=()=>(s=(s*16807)%2147483647)/2147483647;let h='';for(let i=0;i<34;i++){const a=r()*Math.PI,rad=60+r()*230;const x=400+Math.cos(a)*rad*.95,y=450-Math.sin(a)*rad*.6;if(y>410||y<310||x<170||x>630)continue;
+ h+=`<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(5+r()*11).toFixed(0)}" ry="${(3+r()*6).toFixed(0)}" transform="rotate(${(r()*60-30).toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`;}$('spots').innerHTML=h;})();
+
+const rev=(id,t,st,d=.9)=>{const p=eQ(seg(t,st,st+d));$(id).style.transform=`translateY(${(1-p)*110}%)`;};
+const sheen=(el,t,a,b)=>{el.style.backgroundPosition=`${lerp(100,0,eIO(seg(t,a,b)))}% 0`;};
+window.render=function(t){
+ {const small={x:540,y:130,w:240},big={x:540,y:420,w:520};
+  const drop=eBounce(seg(t,.35,1.2));const m=eIO(seg(t,12.7,13.7));
+  const w=lerp(small.w,big.w,m),x=lerp(small.x,big.x,m)-w/2,y=lerp(small.y-(1-drop)*400,big.y,m);
+  const L=$('logo');L.style.transformOrigin='0 0';L.style.visibility='visible';
+  L.style.transform=`translate(${x}px,${y}px) scale(${w/520}) rotate(${(1-m)*Math.sin(t*1.3)*2}deg)`;
+  L.style.opacity=cl(seg(t,.35,.6));
+  L.style.filter=`drop-shadow(0 ${lerp(10,20,m)}px ${lerp(20,40,m)}px rgba(60,40,20,.28)) drop-shadow(0 0 ${m*(20+14*Math.sin(t*2.5))}px rgba(230,190,110,.45))`;}
+ $('glow').style.transform=`translate(${-160+Math.sin(t*.35)*60}px,${300+Math.cos(t*.3)*60}px)`;
+ // toldo desce e fica
+ const ap=eBounce(seg(t,0,.9));$('awg').setAttribute('transform',`translate(0 ${(ap-1)*330})`);
+ S.forEach(([id,a,b],i)=>{const inP=i==0?1:eSine(seg(t,a,a+.55)),outP=i==S.length-1?0:eSine(seg(t,b-.45,b));
+  const el=$(id);el.style.opacity=Math.min(inP,1-outP);el.style.transform=`translateY(${-outP*40}px)`;el.style.visibility=(t<a-.01||t>b+.01)?'hidden':'visible';});
+ // S1: placa cai, balança, vira
+ const dp=eBounce(seg(t,.2,1.0));
+ const FL=1.7;const fp=eIO(seg(t,FL,FL+.55));
+ const swing=t<FL?3*Math.sin(t*5)*Math.exp(-(t-.6)*1.5):9*Math.sin((t-FL)*6.5)*Math.exp(-(t-FL)*1.6);
+ $('signwrap').style.transform=`translateY(${(dp-1)*700}px) rotate(${swing}deg)`;
+ $('card').style.transform=`rotateY(${fp*180}deg) scale(${1+.06*Math.sin(Math.PI*fp)})`;
+ rev('a1',t,2.2);rev('a2',t,2.4,1);sheen($('a2').querySelector('.gold'),t,2.7,4.2);
+ $('tri1').style.transform=`scaleX(${eQ(seg(t,2.9,3.6))})`;
+ // S2
+ const t2=t-4.6;rev('b0',t2,.1,.8);rev('b1',t2,.2);rev('b2',t2,.4);sheen($('b1').querySelector('.gold'),t2,.7,2.2);
+ const pp=eBack(seg(t2,.3,1.1));$('piad').style.opacity=cl(seg(t2,.3,.6));$('piad').style.transform=`translateY(${(1-pp)*120}px) scale(${lerp(.85,1,pp)})`;
+ const fo=eQ(seg(t2,.8,1.5));$('fill').setAttribute('transform',`translate(0 ${(1-fo)*40})`);
+ for(let i=0;i<3;i++){const ph=((t2*.6+i*.33)%1);const el=$('st'+i);el.setAttribute('transform',`translate(${Math.sin(t2*2+i)*8} ${-ph*90})`);el.style.opacity=cl(seg(t2,1,1.6))*Math.sin(Math.PI*ph)*.8;}
+ // S3
+ const t3=t-8.8;rev('c0',t3,.1,.8);rev('c1',t3,.2);rev('c2',t3,.4);sheen($('c2').querySelector('.gold'),t3,.7,2);
+  {const mp=eQ(seg(t3,.5,1.6));[...document.querySelectorAll('.stp')].forEach((e,i)=>{const p=eBack(seg(t3,1.4+i*.2,1.9+i*.2));e.style.opacity=cl(seg(t3,1.4+i*.2,1.6+i*.2));e.style.transform=`translateY(${(1-p)*40}px)`;});const mv=1-mp;$('o2').style.opacity=cl(seg(t3,.5,.7));{const p=eBack(seg(t3,2.1,2.7));$('ifl').style.opacity=cl(seg(t3,2.1,2.3));$('ifl').style.transform=`scale(${lerp(.6,1,p)})`;}
+  $('o2').querySelector('.ic2').style.transform=`translateX(${mv*900}px)`;
+  const dist=mp*520+Math.max(0,t3-1.9)*40;[0,1].forEach(i=>$('sp'+i).setAttribute('transform',`rotate(${-dist*2.2})`));
+  $('mbody').setAttribute('transform',`translate(0 ${Math.sin(t3*14)*1.2*(0.4+mv)})`);
+  $('speed').style.opacity=cl(mv*2.5);$('beam').style.opacity=.2+.2*Math.sin(t3*3);$('speed').setAttribute('transform',`translate(${-mv*30} 0)`);
+  [0,1].forEach(i=>{const ph=((t3*1.4+i*.5)%1);const e=$('pf'+i);e.setAttribute('cx',18-ph*40);e.setAttribute('cy',106-ph*14);e.setAttribute('r',Math.max(.1,4+ph*8));e.style.opacity=(t3>1.7?1:0)*(1-ph)*.8;});}
+ // S4
+ const t4=t-13;
+rev('e1',t4,.6);$('tri4').style.transform=`scaleX(${eQ(seg(t4,.9,1.5))})`;
+ const cp=eQ(seg(t4,1.0,1.7));$('cta').style.opacity=cp;$('cta').style.transform=`translateX(-50%) translateY(${(1-cp)*30}px)`;
+ $('ctash').style.left=`${lerp(-220,900,eIO(seg(t4,1.8,2.7)))}px`;rev('e2',t4,1.3,.8);
+};
+window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready);
+</script></body></html>

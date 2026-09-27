@@ -1,0 +1,84 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Peça do próprio estúdio: "uma IA criada só para fazer vídeos". Futurista: núcleo de IA brilhando, vídeos reais do
+     portfólio (Massela, Personalê) orbitando como saídas renderizadas, HUD em fonte mono. 1080x1350 (feed/WhatsApp). -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+@font-face{font-family:Mono;src:url(assets/fontes/consola.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;background:#04050b;font-family:Din,sans-serif;color:#eaf6ff}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.glow1{position:absolute;left:-260px;top:-200px;width:900px;height:900px;background:radial-gradient(circle,rgba(34,211,238,.28),transparent 62%)}
+.glow2{position:absolute;right:-300px;top:260px;width:1000px;height:1000px;background:radial-gradient(circle,rgba(139,92,246,.30),transparent 60%)}
+.chao{position:absolute;left:-540px;right:-540px;top:930px;height:900px;transform:perspective(520px) rotateX(64deg);transform-origin:50% 0;
+ background-image:linear-gradient(rgba(56,189,248,.22) 2px,transparent 2px),linear-gradient(90deg,rgba(56,189,248,.22) 2px,transparent 2px);background-size:80px 80px;
+ -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 45%,transparent 90%)}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);pointer-events:none}
+.mono{font-family:Mono,monospace;letter-spacing:.08em}
+.hud{font-size:22px;color:rgba(186,230,253,.75)}
+.card{position:absolute;width:176px;height:313px;border-radius:18px;overflow:hidden;border:2px solid rgba(125,211,252,.8);
+ box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 34px rgba(34,211,238,.45),0 30px 60px rgba(0,0,0,.6);background:#000}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .lb{position:absolute;left:8px;right:8px;bottom:8px;padding:5px 8px;border-radius:8px;background:rgba(3,7,18,.78);font-size:14px;color:#7dd3fc;display:flex;justify-content:space-between}
+.card .lb b{color:#a7f3d0;font-weight:400}
+.H{font-weight:700;font-stretch:78%;text-transform:uppercase;line-height:1.15;padding-top:.1em;letter-spacing:.005em}
+.grad{background:linear-gradient(90deg,#22d3ee 0%,#818cf8 55%,#e879f9 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(129,140,248,.55))}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:12px;border:1.5px solid rgba(125,211,252,.55);background:rgba(8,20,40,.6);font-size:22px;color:#cffafe;box-shadow:inset 0 0 18px rgba(34,211,238,.12)}
+.chip i{width:9px;height:9px;border-radius:50%;background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.seta{color:#818cf8;font-size:26px;margin:0 6px}
+</style></head><body>
+<div id="stage">
+ <div class="glow1"></div><div class="glow2"></div><div class="chao"></div>
+
+ <!-- HUD topo -->
+ <div class="abs mono hud" style="left:56px;top:48px"><span style="color:#34d399">●</span> SISTEMA ONLINE</div>
+ <div class="abs mono hud" style="right:56px;top:48px">IA DE VÍDEO // v1.0</div>
+ <div class="abs" style="left:56px;right:56px;top:88px;height:1px;background:linear-gradient(90deg,rgba(125,211,252,.5),transparent 40%,transparent 60%,rgba(125,211,252,.5))"></div>
+
+ <!-- linhas de conexão + núcleo -->
+ <svg class="abs" style="left:0;top:0" width="1080" height="900" viewBox="0 0 1080 900">
+  <defs>
+   <radialGradient id="orb" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#ecfeff"/><stop offset=".25" stop-color="#67e8f9"/><stop offset=".6" stop-color="#6366f1"/><stop offset="1" stop-color="#2e1065"/></radialGradient>
+   <radialGradient id="halo" r=".5"><stop offset=".45" stop-color="rgba(99,102,241,.55)"/><stop offset="1" stop-color="rgba(99,102,241,0)"/></radialGradient>
+   <linearGradient id="fio" x1="0" x2="1"><stop offset="0" stop-color="rgba(34,211,238,0)"/><stop offset=".5" stop-color="rgba(34,211,238,.9)"/><stop offset="1" stop-color="rgba(232,121,249,.2)"/></linearGradient>
+  </defs>
+  <g stroke="url(#fio)" stroke-width="2.5" fill="none">
+   <path d="M540 470 C400 430 260 330 160 300"/><path d="M540 470 C420 520 300 600 205 650"/>
+   <path d="M540 470 C680 430 820 330 920 300"/><path d="M540 470 C660 520 780 600 875 650"/><path d="M540 470 L540 205"/>
+  </g>
+  <g fill="#67e8f9"><circle cx="300" cy="372" r="5"/><circle cx="780" cy="372" r="5"/><circle cx="340" cy="566" r="5"/><circle cx="740" cy="566" r="5"/><circle cx="540" cy="300" r="5"/></g>
+  <circle cx="540" cy="470" r="230" fill="url(#halo)"/>
+  <g fill="none" stroke-linecap="round">
+   <circle cx="540" cy="470" r="200" stroke="rgba(125,211,252,.25)" stroke-width="2"/>
+   <circle cx="540" cy="470" r="200" stroke="#22d3ee" stroke-width="5" stroke-dasharray="180 1077" transform="rotate(-40 540 470)"/>
+   <circle cx="540" cy="470" r="200" stroke="#e879f9" stroke-width="5" stroke-dasharray="90 1167" transform="rotate(150 540 470)"/>
+   <circle cx="540" cy="470" r="168" stroke="rgba(167,139,250,.6)" stroke-width="3" stroke-dasharray="4 14"/>
+   <circle cx="540" cy="470" r="232" stroke="rgba(125,211,252,.35)" stroke-width="1.5" stroke-dasharray="2 10"/>
+  </g>
+  <g stroke="rgba(125,211,252,.7)" stroke-width="3"></g>
+  <circle cx="540" cy="470" r="118" fill="url(#orb)"/>
+  <circle cx="540" cy="470" r="118" fill="none" stroke="rgba(236,254,255,.7)" stroke-width="3"/>
+  <ellipse cx="510" cy="425" rx="46" ry="26" fill="rgba(255,255,255,.35)" transform="rotate(-25 510 425)"/>
+  <path d="M516 424 L582 470 L516 516 Z" fill="#fff" opacity=".95"/>
+ </svg>
+ <div id="ticks"></div>
+
+ <!-- vídeos do portfólio orbitando -->
+ <div class="card" style="left:64px;top:150px;transform:perspective(900px) rotateY(24deg) rotate(-4deg)"><img src="assets/t1.jpg"><div class="lb mono"><span>REELS</span><b>100%</b></div></div>
+ <div class="card" style="left:120px;top:470px;transform:perspective(900px) rotateY(22deg) rotate(3deg) scale(.8)"><img src="assets/t3.jpg"><div class="lb mono"><span>REELS</span><b>100%</b></div></div>
+ <div class="card" style="right:64px;top:150px;transform:perspective(900px) rotateY(-24deg) rotate(4deg)"><img src="assets/t2.jpg"><div class="lb mono"><span>ANÚNCIO</span><b>100%</b></div></div>
+ <div class="card" style="right:120px;top:470px;transform:perspective(900px) rotateY(-22deg) rotate(-3deg) scale(.8)"><img src="assets/t4.jpg"><div class="lb mono"><span>REELS</span><b>100%</b></div></div>
+ <div class="abs mono hud" style="left:0;right:0;top:776px;text-align:center;font-size:20px;color:#a5b4fc">[ PROCESSANDO: ROTEIRO · DESIGN · ANIMAÇÃO · RENDER ]</div>
+
+ <!-- texto -->
+ <div class="abs center mono" style="top:826px;font-size:22px;color:#67e8f9;letter-spacing:.18em">// INTELIGÊNCIA ARTIFICIAL PRÓPRIA</div>
+ <div class="abs center H" style="top:870px;font-size:100px">Uma IA criada</div>
+ <div class="abs center H" style="top:975px;font-size:100px">só para fazer</div>
+ <div class="abs center H grad" style="top:1070px;font-size:128px">seus vídeos</div>
+
+ <div class="abs center mono" style="top:1250px">
+  <span class="chip"><i></i>BRIEFING</span><span class="seta">→</span><span class="chip"><i></i>IDENTIDADE</span><span class="seta">→</span><span class="chip"><i></i>ANIMAÇÃO</span><span class="seta">→</span><span class="chip" style="border-color:#e879f9;color:#fae8ff"><i style="background:#e879f9;box-shadow:0 0 10px #e879f9"></i>VÍDEO PRONTO</span>
+ </div>
+ <div class="scan"></div>
+</div>
+<script>window.render=async()=>{};window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(()=>({duracao:1,videos:[],cortes:[]}));</script>
+</body></html>

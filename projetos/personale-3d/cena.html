@@ -1,0 +1,161 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- PERSONALÊ 3D — caminho 2: "Qual nome vai no seu?". Anúncio de pergunta + resposta.
+     A pergunta fica fixa no topo; um chaveiro desenhado recebe um nome digitado (letras em relevo) e em seguida é
+     "impresso" (camadas de baixo pra cima) virando a FOTO REAL do chaveiro com aquele nome. Você imagina → a Personalê cria.
+     Mesma marca (vermelho/preto/branco, Poppins, pincel), fundo escuro de estúdio para o produto brilhar. -->
+<style>
+@font-face{font-family:Pop;src:url(assets/fontes/Poppins-Bold.ttf);font-weight:700}
+@font-face{font-family:Pop;src:url(assets/fontes/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:Pop;src:url(assets/fontes/Poppins-Regular.ttf);font-weight:400}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+:root{--red:#e3162c;--red2:#b90f20;--ink:#151515;--sub:#5b5b5b}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Pop,sans-serif;color:#fff;background:#111}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.S{position:absolute;inset:0;overflow:hidden;visibility:hidden}
+.S.dark{background:radial-gradient(ellipse 80% 45% at 50% 50%,#3a1418 0%,#161616 55%,#0c0c0c 100%)}
+.S.white{background:linear-gradient(180deg,#fff 0%,#f1f1f1 100%);color:var(--ink)}
+.pontos{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 2px,transparent 2.5px);background-size:36px 36px}
+.white .pontos{background-image:radial-gradient(rgba(0,0,0,.05) 2px,transparent 2.5px)}
+.H{font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.kick{font-size:32px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.pn{display:inline-block;position:relative;padding:.12em .34em .08em;color:#fff;z-index:0}
+.pn::before{content:'';position:absolute;inset:-.02em -.06em;z-index:-1;background:var(--pn) center/100% 100% no-repeat}
+.pn.r{--pn:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M9 20C70 9 170 15 255 10S381 5 395 17L388 38 397 57 386 83C300 93 205 88 121 93S29 97 10 85L17 63 3 44Z' fill='%23e3162c'/%3E%3C/svg%3E")}
+.pn.w{color:var(--red);--pn:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M9 20C70 9 170 15 255 10S381 5 395 17L388 38 397 57 386 83C300 93 205 88 121 93S29 97 10 85L17 63 3 44Z' fill='%23ffffff'/%3E%3C/svg%3E")}
+.card{position:absolute;left:80px;top:650px;width:920px;height:560px;border-radius:44px;overflow:hidden;background:#1c1c1c;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.06)}
+.card .ly{position:absolute;inset:0}
+.card .foto{background-repeat:no-repeat;filter:contrast(1.06) saturate(1.1)}
+.card .bico{position:absolute;left:0;right:0;height:8px;background:#fff;box-shadow:0 0 22px 6px rgba(255,70,90,.9);visibility:hidden}
+.tag{position:absolute;left:112px;top:682px;padding:10px 20px;border-radius:999px;background:rgba(0,0,0,.55);font-size:24px;font-weight:600;letter-spacing:.14em;z-index:5}
+.tag i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--red);margin-right:12px;vertical-align:.1em}
+.ic{width:190px;height:190px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(227,22,44,.35)}
+.ic svg{width:108px;height:108px}
+.swoosh{position:absolute;width:420px;height:420px}
+.cta{position:absolute;left:50%;padding:36px 70px;border-radius:999px;background:var(--red);color:#fff;font-size:48px;font-weight:700;letter-spacing:.03em;white-space:nowrap;overflow:hidden;box-shadow:0 12px 0 var(--red2),0 30px 50px rgba(227,22,44,.35);display:flex;align-items:center;gap:22px}
+.cta .sh{position:absolute;top:0;bottom:0;width:170px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+#bico{position:absolute;left:0;right:0;height:10px;z-index:30;visibility:hidden;background:#fff;box-shadow:0 0 24px 6px rgba(255,80,100,.9),0 0 4px 2px #ff4a5e}
+</style></head><body>
+<div id="stage"><div id="bico"></div></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const eBack=p=>{const c=1.4,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+const camada=(p,n=12)=>Math.floor(p*n+1e-6)/n;
+const lerp=(a,b,p)=>a+(b-a)*p;
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const PROJ=location.pathname.replace(/\/[^/]*$/,'');const url=f=>`${PROJ}/${f}`;
+let P,SEQ=[];const IMG={};
+const pr=(html,d,style='')=>`<div class="pr" data-d="${d}" style="${style}">${html}</div>`;
+const pn=(txt,cor,d)=>`<span class="pn ${cor} bs" data-d="${d}">${esc(txt)}</span>`;
+const ICON={
+ chave:c=>`<svg viewBox="0 0 100 100" fill="none" stroke="${c}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="36" r="18"/><path d="M45 49l38 38M68 72l9-9M76 80l8-8"/></svg>`,
+ lata:c=>`<svg viewBox="0 0 100 100" fill="none" stroke="${c}" stroke-width="8" stroke-linejoin="round"><path d="M28 24h44v58q0 8-8 8H36q-8 0-8-8z"/><ellipse cx="50" cy="24" rx="22" ry="7"/><path d="M50 22q10-14 22-10" stroke-linecap="round"/><path d="M28 44h44M28 70h44" stroke-width="5"/></svg>`,
+ suporte:c=>`<svg viewBox="0 0 100 100" fill="none" stroke="${c}" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><rect x="38" y="10" width="34" height="58" rx="6" transform="rotate(14 55 39)"/><path d="M18 88h64M30 88l12-22h26"/></svg>`};
+const CORES={vermelho:{c:'#e3162c',s:'#9e0c1a',h:'#ff5a6b',tab:'#d31227',l:'#ffffff',x:'#b9b9b9'},
+             branco:{c:'#f4f4f4',s:'#bdbdbd',h:'#ffffff',tab:'#e9e9e9',l:'#5cc3e8',x:'#2f8fb3'}};
+// chaveiro 3 em 1 desenhado (ilustração própria): corpo com aba articulada, furo e argola; nome em relevo
+function chaveiro(cor,linhas,id){const k=CORES[cor];const n=linhas.length;const maior=Math.max(1,...linhas.map(l=>l.length));
+ const fs=Math.min(n>1?88:118,Math.round(400/(maior*.64)));const ys=n>1?[262,356]:[318];
+ const txt=(fill,dx,dy,cls)=>linhas.map((l,i)=>`<text class="${cls}" data-l="${i}" x="${520+dx}" y="${ys[i]+dy}" text-anchor="middle" font-family="Pop" font-weight="700" font-size="${fs}" fill="${fill}">${[...l].map((ch,j)=>`<tspan data-i="${j}">${esc(ch)}</tspan>`).join('')}</text>`).join('');
+ return `<svg id="${id}" viewBox="0 0 920 560" width="920" height="560">
+  <ellipse cx="420" cy="470" rx="360" ry="34" fill="rgba(0,0,0,.45)"/>
+  <circle cx="838" cy="282" r="64" fill="none" stroke="#8d939c" stroke-width="16"/><circle cx="838" cy="282" r="64" fill="none" stroke="#d7dbe0" stroke-width="7"/>
+  <rect x="60" y="176" width="720" height="262" rx="42" fill="${k.s}"/>
+  <rect x="60" y="150" width="720" height="262" rx="42" fill="${k.c}"/>
+  <rect x="60" y="150" width="250" height="262" rx="42" fill="${k.tab}"/><rect x="250" y="150" width="60" height="262" fill="${k.tab}"/>
+  <rect x="300" y="150" width="12" height="262" fill="${k.s}" opacity=".55"/><rect x="250" y="150" width="62" height="70" fill="${k.s}" opacity=".8"/>
+  <rect x="100" y="158" width="620" height="8" rx="4" fill="${k.h}" opacity=".55"/>
+  <circle cx="740" cy="282" r="20" fill="#1c1c1c"/><path d="M752 268 Q800 250 800 282" stroke="#b9bec6" stroke-width="10" fill="none"/>
+  <g class="ext">${[6,5,4,3,2,1].map(o=>txt(k.x,o*.6,o,'e')).join('')}</g>${txt(k.l,0,0,'top')}
+  <rect class="cur" x="0" y="0" width="8" height="${Math.round(fs*.8)}" fill="${cor==='branco'?'#2f8fb3':'#fff'}"/>
+ </svg>`;}
+const swooshes=()=>`<svg class="swoosh" style="left:-40px;top:-40px" viewBox="0 0 420 420"><path d="M0 0H330C250 40 190 60 130 120S40 260 0 330Z" fill="#e3162c"/><path d="M0 360C50 270 90 180 160 130S300 60 380 0" fill="none" stroke="#e3162c" stroke-width="12"/></svg>
+ <svg class="swoosh" style="right:-40px;bottom:-40px;transform:rotate(180deg)" viewBox="0 0 420 420"><path d="M0 0H330C250 40 190 60 130 120S40 260 0 330Z" fill="#e3162c"/><path d="M0 360C50 270 90 180 160 130S300 60 380 0" fill="none" stroke="#e3162c" stroke-width="12"/></svg>`;
+const fotoCss=(c)=>{const [x,y,w]=c.recorte;const s=920/w;const iw=IMG[c.foto].w*s;return `background-image:url(${url(c.foto)});background-size:${iw}px auto;background-position:${-x*s}px ${-y*s}px`;};
+// pergunta fixa no topo (anima só no gancho)
+const pergunta=(anima)=>`${pr(`<div class="H" style="font-size:118px">${esc(P.pergunta[0])}</div>`,anima?0:-9,'position:absolute;left:0;right:0;top:300px;text-align:center')}
+ <div class="abs center H" style="top:425px;font-size:118px">${pn(P.pergunta[1],'r',anima?.2:-9)}</div>`;
+
+function construir(){
+ let t=0;const st=$('stage');
+ P.cenas.forEach((c,i)=>{const a=t,b=t+c.dur;t=b;const el=document.createElement('div');el.id='S'+i;let h='';const prev=P.cenas[i-1];
+  if(c.tipo==='gancho'){el.className='S dark';
+   h=`<div class="pontos"></div>${pergunta(true)}
+    <div class="card up" data-d=".35"><div class="ly">${chaveiro('vermelho',[''],'k'+i)}</div></div>
+    ${pr(`<div style="font-size:40px;font-weight:500;opacity:.85">${esc(c.rodape)}</div>`,.8,'position:absolute;left:0;right:0;top:1290px;text-align:center')}`;
+  }else if(c.tipo==='nome'){el.className='S dark';
+   const base=prev&&prev.tipo==='nome'?`<div class="ly foto" style="${fotoCss(prev)}"></div>`:'';
+   h=`<div class="pontos"></div>${pergunta(false)}
+    <div class="card">${base}<div class="ly il" data-in="${prev&&prev.tipo==='nome'?1:0}">${chaveiro(c.cor,c.nome,'k'+i)}</div>
+     <div class="ly foto real" style="${fotoCss(c)}"></div><div class="bico"></div></div>
+    <div class="tag fd2" data-d="1.55"><i></i>FOTO REAL</div>
+    ${pr(`<div class="H" style="font-size:60px">${esc(c.legenda[0])}</div>`,.25,'position:absolute;left:0;right:0;top:1285px;text-align:center')}
+    <div class="abs center H" style="top:1370px;font-size:96px">${pn(c.legenda[1],'r',1.45)}</div>`;
+  }else if(c.tipo==='tres'){el.className='S dark';
+   h=`<div class="pontos"></div>
+    ${pr(`<div class="H" style="font-size:110px">${esc(c.titulo)}</div>`,.05,'position:absolute;left:0;right:0;top:320px;text-align:center')}
+    <div class="abs center H" style="top:440px;font-size:200px">${pn(c.destaque,'r',.25)}</div>
+    ${c.itens.map((x,j)=>`<div class="abs pop" data-d="${.55+j*.28}" style="left:${70+j*320}px;top:860px;width:300px;text-align:center">
+      <div class="ic" style="margin:0 auto">${ICON[x[0]]('#fff')}</div><div class="H" style="font-size:40px;margin-top:30px;line-height:1.15">${esc(x[1])}</div></div>`).join('')}
+    ${pr(`<div style="font-size:40px;font-weight:500;opacity:.85">Pequeno no tamanho, <b style="color:#ff4d5f">gigante na função.</b></div>`,1.5,'position:absolute;left:60px;right:60px;top:1300px;text-align:center')}`;
+  }else if(c.tipo==='final'){el.className='S white';
+   h=`<div class="pontos"></div>${swooshes()}
+    <img class="abs lg" src="${url(P.marca.logo)}" style="left:50%;top:270px;width:560px;margin-left:-280px;mix-blend-mode:multiply">
+    ${pr(`<div class="H" style="font-size:100px">${esc(c.titulo)}</div>`,.35,'position:absolute;left:0;right:0;top:790px;text-align:center')}
+    <div class="abs center H" style="top:900px;font-size:100px">${pn(c.destaque,'r',.55)}</div>
+    ${pr(`<div style="font-size:46px;color:var(--sub)">WhatsApp <b style="color:var(--ink)">${esc(P.marca.whatsapp)}</b></div>`,.8,'position:absolute;left:0;right:0;top:1075px;text-align:center')}
+    <div class="cta up" data-d="1.0" style="top:1175px">${esc(c.botao)}<svg width="36" height="36" viewBox="0 0 34 34"><path d="M6 17h20M18 8l9 9-9 9" stroke="currentColor" stroke-width="5" fill="none"/></svg><div class="sh"></div></div>
+    ${pr(`<div class="kick" style="color:var(--red)">${esc(P.marca.instagram)}</div>`,1.3,'position:absolute;left:0;right:0;top:1380px;text-align:center')}`;
+  }
+  el.innerHTML=h;st.appendChild(el);SEQ.push({c,el,a,b});
+ });
+ window.DURACAO=t;
+}
+function digita(el,lt,d0,d1){ // letras aparecem uma a uma + cursor piscando
+ const svg=el.querySelector('.il svg')||el.querySelector('.card svg');if(!svg)return;
+ const tops=[...svg.querySelectorAll('text.top')];const tot=tops.reduce((s,x)=>s+x.textContent.length,0);
+ const n=Math.floor(seg(lt,d0,d1)*tot+1e-6);let k=0,curL=0,curJ=0;
+ tops.forEach((tx,li)=>{[...tx.querySelectorAll('tspan')].forEach((sp,j)=>{const on=k<n;k++;
+  svg.querySelectorAll(`text[data-l="${li}"] tspan[data-i="${j}"]`).forEach(z=>z.setAttribute('fill-opacity',on?1:0));if(on){curL=li;curJ=j+1;}});});
+ const cur=svg.querySelector('.cur');const blink=Math.floor(lt*2.4)%2===0;
+ if(!tops.length||tot===0){cur.setAttribute('x',516);cur.setAttribute('y',262);cur.setAttribute('opacity',blink?1:0);return;}
+ const tx=tops[n>0?curL:0];const len=tx.getComputedTextLength();const x0=+tx.getAttribute('x')-len/2;
+ const sub=n>0&&curJ>0?tx.getSubStringLength(0,curJ):0;const fs=+tx.getAttribute('font-size');
+ cur.setAttribute('x',x0+sub+6);cur.setAttribute('y',+tx.getAttribute('y')-fs*.72);cur.setAttribute('opacity',(n<tot||lt<d1+.25)&&blink?1:0);
+}
+function anim(s,lt){const el=s.el;
+ el.querySelectorAll('.pr').forEach(x=>{const d=+x.dataset.d,p=camada(eIO(seg(lt,d,d+.55)),10);x.style.clipPath=`inset(${(1-p)*115-15}% -5% -10% -5%)`;x.style.visibility=p>0?'':'hidden';x.style.transform=`translateY(${(1-p)*14}px)`;});
+ el.querySelectorAll('.bs').forEach(x=>{const d=+x.dataset.d,w=eQ(seg(lt,d,d+.5));x.style.clipPath=`inset(-30% ${(1-w)*100}% -30% -5%)`;x.style.visibility=w>0?'':'hidden';
+  x.style.transform=`scale(${lerp(1.08,1,eQ(seg(lt,d,d+.7)))}) rotate(-2deg)`;});
+ el.querySelectorAll('.pop').forEach(x=>{const d=+x.dataset.d,p=eBack(seg(lt,d,d+.5));x.style.opacity=cl(seg(lt,d,d+.12));x.style.transform=`scale(${lerp(.4,1,p)})`;});
+ el.querySelectorAll('.up').forEach(x=>{const d=+x.dataset.d,p=eQ(seg(lt,d,d+.7));x.style.opacity=cl(seg(lt,d,d+.25));
+  x.style.transform=(x.classList.contains('cta')?'translateX(-50%) ':'')+`translateY(${(1-p)*80}px) scale(${lerp(.92,1,p)})`;
+  const sh=x.querySelector('.sh');if(sh)sh.style.left=`${lerp(-240,900,eIO((((lt-d-.8)%2.2)+2.2)%2.2/1.1))}px`;});
+ el.querySelectorAll('.fd2').forEach(x=>{const d=+x.dataset.d,p=eQ(seg(lt,d,d+.4));x.style.opacity=p;x.style.transform=`translateY(${(1-p)*-12}px)`;});
+ el.querySelectorAll('.lg').forEach(x=>{const p=camada(eIO(seg(lt,0,.9)),14);x.style.clipPath=`inset(${(1-p)*100}% 0 0 0)`;});
+ if(s.c.tipo==='gancho')digita(el,lt,9,10);
+ if(s.c.tipo==='nome'){const il=el.querySelector('.il');const T0=il.dataset.in==='1'?.35:0;
+  // 1) desenho entra (se veio de outro nome, "imprime" por cima da foto anterior)
+  const pin=T0?camada(eIO(seg(lt,0,.35)),10):1;il.style.clipPath=`inset(${(1-pin)*100}% 0 0 0)`;
+  // 2) digita o nome  3) imprime a foto real por cima
+  digita(el,lt,T0+.1,T0+.1+Math.min(.75,.1*s.c.nome.join('').length+.2));
+  const R0=1.05,pf=camada(eIO(seg(lt,R0,R0+.5)),14);const real=el.querySelector('.real');real.style.clipPath=`inset(${(1-pf)*100}% 0 0 0)`;
+  const bc=el.querySelector('.bico');const bp=T0&&lt<.35?pin:pf;bc.style.visibility=(bp>0&&bp<1)?'visible':'hidden';bc.style.top=((1-bp)*560-4)+'px';
+  real.style.transform=`scale(${lerp(1.06,1,eQ(seg(lt,R0,s.b-s.a)))})`;}
+}
+const T=.5;
+window.render=async function(t){
+ let i=SEQ.findIndex(s=>t>=s.a&&t<s.b);if(i<0)i=SEQ.length-1;const cur=SEQ[i],prev=SEQ[i-1];const lt=t-cur.a;
+ SEQ.forEach(s=>{s.el.style.visibility='hidden';s.el.style.clipPath='none';s.el.style.zIndex=1;});$('bico').style.visibility='hidden';
+ cur.el.style.visibility='visible';cur.el.style.zIndex=2;anim(cur,lt);
+ const continua=prev&&['gancho','nome'].includes(prev.c.tipo)&&cur.c.tipo==='nome'; // mesma cena: sem troca de tela
+ if(prev&&!continua&&lt<T){const p=camada(eIO(seg(lt,0,T)),16);prev.el.style.visibility='visible';anim(prev,prev.b-prev.a+lt);
+  cur.el.style.clipPath=`inset(${(1-p)*100}% 0 0 0)`;const b=$('bico');b.style.visibility=p<1?'visible':'hidden';b.style.top=((1-p)*1920-5)+'px';}
+};
+window.CORTES=()=>SEQ.slice(1).map(s=>s.a);
+window.ready=fetch(`${PROJ}/projeto.json`).then(r=>r.json()).then(async j=>{P=j;
+ for(const f of new Set(P.cenas.filter(c=>c.foto).map(c=>c.foto))){const im=new Image();im.src=url(f);await im.decode();IMG[f]={w:im.naturalWidth};}
+ construir();return Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));}).then(()=>document.fonts.ready).then(()=>({duracao:window.DURACAO,videos:[],cortes:window.CORTES()}));
+</script></body></html>

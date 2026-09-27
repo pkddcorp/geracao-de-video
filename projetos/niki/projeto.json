@@ -1,0 +1,26 @@
+{
+ "marca": { "nome": "Niki Restaurante e Lanchonete", "logo": "assets/logo.png", "instagram": "@nikirestauranteitu" },
+ "tema": {
+  "fundo": ["#fff8e8", "#ffe7ad"], "texto": "#2a1a12", "suave": "#7a5a40",
+  "acento": "#d71920", "acento_txt": "#ffffff", "acento_escuro": "#8f0f14", "anel": "#d71920",
+  "alt": ["#d71920", "#a50f15"], "alt_acento": "#ffd23f", "alt_acento_txt": "#a50f15",
+  "destaque": "cor", "textura": "pontos", "textura_cor": "rgba(215,25,32,.07)", "transicao": "dissolve",
+  "fonte_titulo": "assets/fontes/seguibl.ttf", "fonte_texto": "assets/fontes/Poppins-Bold.ttf", "fonte_pitch": "assets/fontes/Poppins-Medium.ttf",
+  "faixa": "RESTAURANTE E LANCHONETE", "foto_acento": "#ffd23f"
+ },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "abertura", "dur": 2.8, "kicker": "Itu", "titulo": "Comida", "destaque": "com amor", "tamanho": 150 },
+  { "tipo": "ponto", "dur": 3.0, "alt": true, "kicker": "Tradição", "numero": "40+", "tam_numero": 320,
+    "titulo": "anos de", "destaque": "rede Niki" },
+  { "tipo": "midia", "dur": 2.8, "titulo": "Pare e venha", "destaque": "almoçar no Niki!",
+    "itens": [ { "arquivo": "assets/buffet.jpg", "de": [0.3, 0.38, 0.4], "para": [0.32, 0.38, 0.36] } ] },
+  { "tipo": "chips", "dur": 3.4, "kicker": "No Niki tem", "titulo": "Restaurante e", "destaque": "lanchonete", "tamanho": 100,
+    "itens": ["Almoço", "Buffet", "Lanches", "Delivery"] },
+  { "tipo": "lista", "dur": 4.0, "kicker": "Delivery", "titulo": "Peça sem", "destaque": "sair de casa", "tamanho": 100,
+    "itens": [ ["Segunda a sexta", "10h30 às 15h"], ["Sábado", "10h30 às 14h30"] ] },
+  { "tipo": "final", "dur": 4.2, "titulo": "Faça seu", "destaque": "pedido!", "texto": "WhatsApp **(11) 4023-0473**", "botao": "PEÇA PELO WHATSAPP" },
+  { "tipo": "pitch", "dur": 5.0, "linhas": ["40 anos de história merecem", "um Instagram à altura."],
+    "destaque": "Imagina o Niki postando vídeos assim toda semana.", "chamada": "BORA?" }
+ ]
+}

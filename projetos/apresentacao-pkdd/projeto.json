@@ -1,0 +1,16 @@
+{
+ "nome_ia": "PKDD",
+ "cenas": [
+  { "tipo": "boot", "dur": 2.8 },
+  { "tipo": "manifesto", "dur": 2.6, "linhas": ["Uma IA criada", "só para fazer"], "destaque": "vídeos" },
+  { "tipo": "clipe", "dur": 2.2, "n": "01", "projeto": "Depósito Massela", "formato": "Reels", "arquivo": "assets/c1.mp4" },
+  { "tipo": "clipe", "dur": 2.2, "n": "02", "projeto": "Personalê 3D", "formato": "Anúncio", "arquivo": "assets/c2.mp4" },
+  { "tipo": "clipe", "dur": 2.2, "n": "03", "projeto": "Depósito Massela", "formato": "Stories", "arquivo": "assets/c3.mp4", "topo": true },
+  { "tipo": "clipe", "dur": 2.2, "n": "04", "projeto": "Personalê 3D", "formato": "Reels", "arquivo": "assets/c4.mp4" },
+  { "tipo": "processo", "dur": 3.4, "kicker": "// como funciona",
+    "itens": [["Você manda", "a ideia e as fotos"], ["Eu crio", "identidade e roteiro"], ["Você recebe", "o vídeo pronto"]] },
+  { "tipo": "formatos", "dur": 2.6, "titulo": "Tudo com a cara", "destaque": "da sua marca",
+    "itens": ["Reels", "Stories", "Posts", "Anúncios"] },
+  { "tipo": "final", "dur": 4.0, "titulo": "Bora fazer", "destaque": "o seu?", "botao": "ME CHAMA NO DIRECT" }
+ ]
+}

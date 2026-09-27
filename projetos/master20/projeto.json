@@ -1,0 +1,145 @@
+{
+ "marca": {
+  "nome": "Master 20",
+  "logo": "assets/logo.png",
+  "instagram": "@master20_ituu"
+ },
+ "tema": {
+  "fundo": [
+   "#1e0f06",
+   "#0a0503"
+  ],
+  "texto": "#ffffff",
+  "suave": "rgba(255,255,255,.75)",
+  "acento": "#ff6a00",
+  "acento_txt": "#ffffff",
+  "acento_escuro": "#9a3a00",
+  "anel": "#ffb000",
+  "alt": [
+   "#ff6a00",
+   "#e04800"
+  ],
+  "alt_acento": "#ffd000",
+  "alt_acento_txt": "#1e0f06",
+  "destaque": "placa",
+  "textura": "grade",
+  "textura_cor": "rgba(255,106,0,.07)",
+  "transicao": "empurra",
+  "fonte_titulo": "assets/fontes/impact.ttf",
+  "titulo_css": "text-transform:uppercase;letter-spacing:.01em",
+  "fonte_texto": "assets/fontes/Poppins-Bold.ttf",
+  "fonte_pitch": "assets/fontes/Poppins-Medium.ttf",
+  "chip_bg": "#2a150a"
+ },
+ "pitch": true,
+ "cenas": [
+  {
+   "tipo": "abertura",
+   "dur": 2.8,
+   "kicker": "A loja do preço único",
+   "titulo": "Aqui tudo é",
+   "destaque": "R$ 20!",
+   "tamanho": 150
+  },
+  {
+   "tipo": "ponto",
+   "dur": 3,
+   "alt": true,
+   "kicker": "Achou, gostou, levou",
+   "numero": "R$ 20",
+   "tam_numero": 300,
+   "titulo": "Sem surpresa",
+   "destaque": "no caixa",
+   "tamanho": 110
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.6,
+   "titulo": "Achadinhos",
+   "destaque": "por R$ 20",
+   "itens": [
+    {
+     "arquivo": "assets/bowls.jpg",
+     "de": [
+      0.5,
+      0.7,
+      0.56
+     ],
+     "para": [
+      0.5,
+      0.68,
+      0.46
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "chips",
+   "dur": 3.8,
+   "kicker": "O que você encontra",
+   "titulo": "De tudo",
+   "destaque": "um pouco",
+   "tamanho": 120,
+   "itens": [
+    "Roupas",
+    "Calçados",
+    "Acessórios",
+    "Cama e banho",
+    "Utilidades",
+    "Eletrônicos",
+    "Brinquedos",
+    "Casa"
+   ],
+   "rodape": "Novidades e reposição **todos os dias**"
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.4,
+   "titulo": "3 copos de vidro",
+   "destaque": "por R$ 20",
+   "itens": [
+    {
+     "arquivo": "assets/copos.jpg",
+     "de": [
+      0.5,
+      0.62,
+      0.72
+     ],
+     "para": [
+      0.5,
+      0.6,
+      0.58
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "ponto",
+   "dur": 2.8,
+   "kicker": "E ainda",
+   "numero": "6x",
+   "tam_numero": 320,
+   "titulo": "sem",
+   "destaque": "juros",
+   "tamanho": 130
+  },
+  {
+   "tipo": "final",
+   "dur": 4.2,
+   "titulo": "Vem pra",
+   "destaque": "Master 20!",
+   "texto": "Novidades **todos os dias**",
+   "botao": "SIGA E VEM CONFERIR"
+  },
+  {
+   "tipo": "pitch",
+   "dur": 5,
+   "linhas": [
+    "Preço único merece",
+    "vídeo que para o dedo."
+   ],
+   "destaque": "Imagina os achadinhos da semana nesse formato.",
+   "chamada": "BORA?"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "marca": { "nome": "Smash House", "logo": "assets/logo.png", "instagram": "@smashhouse.itu",
+            "endereco": "Av. Ermelindo Maffei, 35 · Itu", "frase": "O melhor smash da sua vida." },
+ "pitch": true,
+ "roteiro": {
+  "abertura": ["Bateu", "fome."],
+  "chapa": ["Na", "chapa."], "chips": ["Pão seladinho", "Carne smash", "Crostinha na chapa", "Queijo derretendo"],
+  "jeito": ["Do seu", "jeito."], "opcoes": [["burger", "Smash"], ["fritas", "Batata"], ["acai", "Açaí"], ["copo", "Combo"]],
+  "pedido": ["Pedido", "online."], "passos": ["Pedido recebido", "Na chapa", "Pronto!"], "pedido_rodape": "Cardápio e pedidos no link da bio",
+  "horario": ["Todo", "dia."], "horas": [["Segunda a sexta", "11h às 22h"], ["Sábado e domingo", "17h30 às 22h"]]
+ },
+ "pitch_texto": { "linhas": ["Um smash desses é bom demais", "pra ficar parado numa foto."],
+                  "destaque": "Imagina o perfil de vocês com vídeos assim toda semana.", "chamada": "BORA?" }
+}

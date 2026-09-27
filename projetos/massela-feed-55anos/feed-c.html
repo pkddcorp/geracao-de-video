@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- VARIAÇÃO C — "Foto herói": caminhão Massela em tela cheia, texto alinhado à esquerda sobre degradê azul. -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Din,sans-serif;color:#fff;background:#0d1a5c}
+.abs{position:absolute}
+.cond{font-stretch:75%;font-weight:700;text-transform:uppercase}
+.placa{display:inline-block;position:relative;background:#f4b31a;color:#0d1a5c;padding:.17em .24em .06em}
+.placa::after{content:'';position:absolute;right:-1px;top:-1px;width:.34em;height:.12em;background:#fff}
+</style></head><body>
+<div id="stage">
+ <img class="abs" src="assets/caminhao.jpg" style="left:0;top:0;width:1080px;height:1350px;object-fit:cover;object-position:62% 40%;filter:brightness(1.05) contrast(1.08) saturate(1.1)">
+ <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(8,14,50,.35) 0%,rgba(8,14,50,0) 22%,rgba(8,14,50,0) 42%,rgba(11,22,80,.88) 70%,#0b1650 100%)"></div>
+ <div class="abs" style="left:64px;top:64px;background:#fff;border-radius:12px;padding:14px 18px 10px;box-shadow:0 14px 30px rgba(0,0,0,.3)"><img src="assets/logo.png" style="width:200px;display:block"></div>
+ <div class="abs" style="left:80px;top:760px;font-size:34px;letter-spacing:.3em;font-weight:600;font-stretch:85%;display:flex;align-items:center;gap:18px"><i style="width:60px;height:6px;background:#f4b31a;display:block"></i>HÁ MAIS DE</div>
+ <div class="abs cond" style="left:72px;top:800px;font-size:300px;line-height:1">55</div>
+ <div class="abs cond" style="left:80px;top:1105px;font-size:84px;line-height:1"><span class="placa">anos no mercado</span></div>
+ <div class="abs" style="left:80px;top:1240px;font-size:30px;opacity:.85">Material de construção e aluguel de caçambas · Itu – SP</div>
+</div>
+<script>window.render=async()=>{};window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(()=>({duracao:1,videos:[],cortes:[]}));</script>
+</body></html>

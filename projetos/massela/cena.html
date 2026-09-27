@@ -1,0 +1,158 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- IDENTIDADE MASSELA — "Obra firme": concreto claro + azul Massela + amarelo sinalização.
+     Tipografia industrial condensada (Bahnschrift/DIN), palavra-chave em "placa" azul (como o logo e a placa da loja),
+     telhado do logo como motivo e como transição (abre em forma de casa).
+     Lê o roteiro de projeto.json (mesmos tipos de cena do modelo padrão; extra: "escuro": true numa tela = fundo azul). -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+:root{--azul:#15277a;--azul2:#0d1a5c;--amar:#f4b31a;--conc1:#f6f7f9;--conc2:#e3e7ed;--txt:#15277a;--sub:#5a6479}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Din,sans-serif;color:var(--txt);background:#000}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.cond{font-stretch:75%;font-weight:700;text-transform:uppercase;letter-spacing:.005em}
+.kick{font-size:34px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;font-stretch:85%;color:var(--sub);display:flex;justify-content:center;align-items:center;gap:18px}
+.kick .sq{width:18px;height:18px;background:var(--amar);display:inline-block;flex:none}
+.ln{overflow:hidden;display:block;padding-bottom:.04em}.ln>span{display:inline-block}
+.placa{display:inline-block;position:relative;background:var(--azul);color:#fff;padding:.02em .22em .06em;margin-top:.12em}
+.placa::after{content:'';position:absolute;right:-1px;top:-1px;width:.34em;height:.12em;background:var(--amar)}
+.layer{position:absolute;inset:0;overflow:hidden}
+#light{background:linear-gradient(180deg,var(--conc1) 0%,var(--conc2) 100%)}
+#grade{position:absolute;inset:0;background-image:linear-gradient(rgba(21,39,122,.035) 2px,transparent 2px),linear-gradient(90deg,rgba(21,39,122,.035) 2px,transparent 2px);background-size:90px 90px;background-position:-1px -1px}
+.L{position:absolute;inset:0;visibility:hidden}
+.L.dark{background:linear-gradient(180deg,#18298a 0%,var(--azul2) 100%)}
+.L.dark #g2{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.04) 2px,transparent 2px);background-size:90px 90px}
+.L.dark{color:#fff}.L.dark .kick{color:rgba(255,255,255,.75)}
+.L.dark .placa{background:var(--amar);color:var(--azul2)}.L.dark .placa::after{background:#fff}
+#full img.m{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.04) contrast(1.06) saturate(1.08)}
+.num{font-size:330px;line-height:.9;font-stretch:75%;font-weight:700}
+.num em{font-style:normal;color:var(--amar)}
+.drow{position:absolute;left:150px;right:120px;display:flex;align-items:center;gap:40px;padding-bottom:34px;border-bottom:2px solid rgba(21,39,122,.12)}
+.drow b{flex:none;width:92px;height:92px;background:var(--amar);color:var(--azul2);font-size:54px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.drow .t1{font-size:74px;line-height:1;font-stretch:75%;font-weight:700;text-transform:uppercase;display:block}
+.drow .t2{font-size:40px;font-weight:400;color:var(--sub);display:block;margin-top:6px}
+.row{position:absolute;left:120px;right:120px;display:flex;align-items:baseline;gap:18px}
+.row .n{font-size:60px;font-stretch:80%;font-weight:600;text-transform:uppercase;white-space:nowrap}.row .d{flex:1;border-bottom:3px dotted rgba(21,39,122,.35);transform-origin:0 0}
+.row .p{font-size:48px;font-weight:700;white-space:nowrap}
+.cta{position:absolute;left:50%;padding:34px 64px;border-radius:12px;background:var(--amar);color:var(--azul2);font-size:44px;letter-spacing:.08em;font-weight:700;font-stretch:85%;white-space:nowrap;overflow:hidden;box-shadow:0 14px 0 var(--azul2),0 30px 50px rgba(13,26,92,.25);display:flex;align-items:center;gap:22px}
+.cta .sh{position:absolute;top:0;bottom:0;width:160px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+.roof{position:absolute;left:50%;margin-left:-130px;width:260px;height:80px;overflow:visible}
+.roof polyline{fill:none;stroke:var(--amar);stroke-width:14;stroke-linejoin:miter;stroke-dasharray:320;stroke-dashoffset:320}
+#base{position:absolute;left:0;right:0;bottom:0;height:70px;background:var(--azul);display:flex;align-items:center;justify-content:center;gap:24px;color:#fff;font-size:24px;letter-spacing:.3em;font-weight:600}
+#base i{display:block;width:120px;height:2px;background:rgba(255,255,255,.7)}
+#badge{position:absolute;right:56px;top:84px;background:#fff;padding:14px 18px 10px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#badge img{width:150px;display:block}
+</style></head><body>
+<div id="stage">
+ <div class="layer" id="light">
+  <div id="grade"></div>
+  <div id="base"><i></i>MATERIAIS PARA CONSTRUÇÃO<i></i></div>
+  <div id="edge" class="abs" style="left:0;right:0;top:0;height:12px;background:var(--amar);opacity:0"></div>
+  <div id="telas"></div>
+ </div>
+ <div class="layer" id="hx" style="background:var(--amar);visibility:hidden"></div>
+ <div class="layer" id="full">
+  <img class="m" id="mA"><img class="m" id="mB">
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 72%,rgba(0,0,0,.3) 100%)"></div>
+  <div id="badge"><img id="fbadge"></div>
+ </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const eBack=p=>{const c=1.3,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+const lerp=(a,b,p)=>a+(b-a)*p;const pad=n=>String(n).padStart(4,'0');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const rich=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b style="font-weight:700">$1</b>');
+const PROJ=location.pathname.replace(/\/[^/]*$/,'');
+let P,SEQ=[],MEDIA={};
+const ln=(txt,d,cls='',style='')=>`<span class="ln"><span class="r ${cls}" data-d="${d}" style="${style}">${txt}</span></span>`;
+// título condensado + palavra-chave numa "placa" que abre da esquerda
+const tit=(c,d)=>{const a=esc(c.titulo||'');return (a?ln(a,d):'')+(c.destaque?`<span class="ln"><span class="r pl" data-d="${d+.25}"><span class="placa">${esc(c.destaque)}</span></span></span>`:'');};
+const roof=(d,top)=>`<svg class="roof tr" data-d="${d}" style="top:${top}px" viewBox="0 0 260 80"><polyline points="8,74 130,10 252,74"/></svg>`;
+const url=f=>`${PROJ}/${f}`;
+
+function construir(){
+ $('fbadge').src=url(P.marca.logo);
+ let t=0;
+ P.cenas.forEach((c,i)=>{const a=t,b=t+c.dur;t=b;
+  if(c.tipo==='midia'){SEQ.push({k:'F',itens:c.itens,a,b});c.itens.forEach(it=>{if(/\.(mp4|mov|webm)$/i.test(it.arquivo))MEDIA[it.arquivo]=true;});return;}
+  const el=document.createElement('div');el.className='L'+(c.escuro?' dark':'');el.id='L'+i;let h=c.escuro?'<div id="g2"></div>':'';
+  if(c.tipo==='abertura'){
+   h+=`<img class="abs lg" src="${url(P.marca.logo)}" style="left:50%;top:360px;width:420px;margin-left:-210px">
+    <div class="abs center kick" style="top:780px">${ln('<span class="sq"></span>'+esc(c.kicker),.35,'','display:flex;align-items:center;gap:18px')}</div>
+    <div class="abs center cond" style="top:850px;font-size:${c.tamanho||130}px;line-height:.98">${tit(c,.5)}</div>`+roof(1.2,1250);
+  }else if(c.tipo==='ponto'){
+   const nm=esc(c.numero||'').replace(/\+/g,'<em>+</em>');
+   h+=roof(.05,400)+`<div class="abs center num" style="top:480px">${ln(nm,.15)}</div>
+    <div class="abs center kick" style="top:820px">${ln('<span class="sq"></span>'+esc(c.kicker),.3,'','display:flex;align-items:center;gap:18px')}</div>
+    <div class="abs center cond" style="top:890px;font-size:${c.tamanho||118}px;line-height:.98">${tit(c,.4)}</div>
+    ${c.texto?`<div class="abs center" style="top:1200px;font-size:42px;font-weight:400;line-height:1.4;padding:0 120px;opacity:.85">${ln(rich(c.texto),1.0)}</div>`:''}`;
+  }else if(c.tipo==='topicos'){
+   h+=`<div class="abs center kick" style="top:480px">${ln('<span class="sq"></span>'+esc(c.kicker),.1,'','display:flex;align-items:center;gap:18px')}</div>`+c.itens.map((x,j)=>{const [p1,p2]=x.split('|');
+    return `<div class="drow fi" data-d="${.3+j*.35}" style="top:${610+j*230}px"><b>${j+1}</b><span><span class="t1">${esc(p1)}</span>${p2?`<span class="t2">${esc(p2)}</span>`:''}</span></div>`}).join('');
+  }else if(c.tipo==='lista'){
+   h+=`<div class="abs center kick" style="top:230px">${ln('<span class="sq"></span>'+esc(c.kicker),.1,'','display:flex;align-items:center;gap:18px')}</div>
+    <div class="abs center cond" style="top:290px;font-size:100px;line-height:.98">${ln(esc(c.titulo||'')+(c.destaque?' <span class="placa">'+esc(c.destaque)+'</span>':''),.2)}</div>`+
+    c.itens.map((x,j)=>`<div class="row" data-i="${j}" style="top:${520+j*Math.min(112,900/c.itens.length)}px"><span class="n">${esc(x[0])}</span><span class="d"></span><span class="p">${esc(x[1])}</span></div>`).join('')+
+    (c.rodape?`<div class="abs center fi" data-d="${.8+c.itens.length*.18}" style="top:1460px;font-size:34px;color:var(--sub)">${esc(c.rodape)}</div>`:'');
+  }else if(c.tipo==='final'){
+   h+=`<img class="abs lg" src="${url(P.marca.logo)}" style="left:50%;top:330px;width:560px;margin-left:-280px">
+    <div class="abs center cond" style="top:760px;font-size:92px;line-height:1">${ln(esc(c.titulo||'')+(c.destaque?' <span class="placa" style="margin-top:0">'+esc(c.destaque)+'</span>':''),.5)}</div>
+    ${c.texto?`<div class="abs center" style="top:905px;font-size:44px;color:var(--sub);font-weight:400">${ln(rich(c.texto),.7)}</div>`:''}
+    <div class="cta fi" data-d=".9" style="top:1030px">${esc(c.botao||'')}<svg width="34" height="34" viewBox="0 0 34 34"><path d="M6 17h20M18 8l9 9-9 9" stroke="currentColor" stroke-width="5" fill="none"/></svg><div class="sh"></div></div>
+    <div class="abs center kick" style="top:1225px;font-size:30px">${ln(esc(P.marca.instagram||''),1.5)}</div>`;
+  }
+  el.innerHTML=h;$('telas').appendChild(el);SEQ.push({k:'L',id:el.id,a,b});
+ });
+ window.DURACAO=t;
+}
+function srcOf(it,lt){if(MEDIA[it.arquivo]){const q=window.QUADROS[it.arquivo];const f=Math.min(q.n,Math.max(1,Math.floor((lt+(it.inicio||0))*30)+1));return `/${q.pasta}/${pad(f)}.jpg`;}return url(it.arquivo);}
+const setImg=(el,src)=>{if(el.dataset.s!==src){el.dataset.s=src;el.src=src;return el.decode().catch(()=>{});}return null;};
+function animLight(el,lt){
+ el.querySelectorAll('.r').forEach(s=>{const d=+s.dataset.d;const p=eQ(seg(lt,d,d+.7));
+  if(s.classList.contains('pl')){const pq=s.querySelector('.placa');const w=eQ(seg(lt,d,d+.6));pq.style.clipPath=`inset(0 ${(1-w)*100}% 0 0)`;s.style.transform='none';}
+  else s.style.transform=`translateY(${(1-p)*110}%)`;});
+ el.querySelectorAll('.tr').forEach(s=>{const d=+s.dataset.d;s.querySelector('polyline').style.strokeDashoffset=320*(1-eIO(seg(lt,d,d+.8)));});
+ el.querySelectorAll('.fi').forEach(s=>{const d=+s.dataset.d;const p=eQ(seg(lt,d,d+.7));
+  s.style.opacity=cl(seg(lt,d,d+.25));const base=s.classList.contains('cta')?'translateX(-50%) ':'';
+  s.style.transform=base+(s.classList.contains('drow')?`translateX(${(1-p)*-70}px)`:`translateY(${(1-p)*40}px)`);
+  const sh=s.querySelector('.sh');if(sh)sh.style.left=`${lerp(-220,900,eIO(seg(lt,d+.8,d+1.7)))}px`;});
+ el.querySelectorAll('.lg').forEach(s=>{const p=eBack(seg(lt,0,.8));s.style.opacity=cl(seg(lt,0,.3));
+  s.style.transform=`translateY(${(1-eQ(seg(lt,0,.8)))*50}px) scale(${lerp(.85,1,p)})`;s.style.filter='drop-shadow(0 16px 26px rgba(13,26,92,.18))';});
+ el.querySelectorAll('.row').forEach(r=>{const i=+r.dataset.i;const p=eQ(seg(lt,.6+i*.18,1.3+i*.18));r.style.opacity=p;r.style.transform=`translateX(${(1-p)*-60}px)`;
+  r.querySelector('.d').style.transform=`translateY(-12px) scaleX(${eQ(seg(lt,.8+i*.18,1.6+i*.18))})`;});
+}
+// casa (telhado + paredes) centrada em 540,960 com "raio" r
+const casa=r=>{const x=540,y=960;return `polygon(${x}px ${y-r}px, ${x+r}px ${y-.35*r}px, ${x+.8*r}px ${y-.35*r}px, ${x+.8*r}px ${y+.8*r}px, ${x-.8*r}px ${y+.8*r}px, ${x-.8*r}px ${y-.35*r}px, ${x-r}px ${y-.35*r}px)`;};
+window.render=async function(t){
+ const waits=[];let i=SEQ.findIndex(s=>t>=s.a&&t<s.b);if(i<0)i=SEQ.length-1;const cur=SEQ[i],prev=SEQ[i-1];const lt=t-cur.a;
+ document.querySelectorAll('.L').forEach(e=>{e.style.visibility='hidden';e.style.transform='none';e.style.opacity=1;});
+ const light=$('light'),full=$('full'),hx=$('hx');hx.style.visibility='hidden';$('edge').style.opacity=0;
+ const drawFull=(s,lt)=>{const list=s.itens,dur=s.b-s.a,n=list.length,sd=dur/n,XF=.6;const k=Math.min(n-1,Math.floor(lt/sd));
+  const put=(el,j,op)=>{const it=list[j];const llt=lt-j*sd;waits.push(setImg(el,srcOf(it,llt)));el.style.objectPosition=it.posicao||'50% 50%';
+   const z=it.zoom||(j%2?[1.0,1.1]:[1.1,1.0]);const span=n>1?sd+XF:dur;el.style.transform=`scale(${lerp(z[0],z[1],cl((llt+(j>0?XF:0))/span))})`;el.style.opacity=op;};
+  const xf=(n>1&&k>0)?eSine(seg(lt-k*sd,0,XF)):1;put($('mB'),k,xf);if(k>0&&xf<1)put($('mA'),k-1,1);else $('mA').style.opacity=0;
+  $('badge').style.opacity=P.marca.logo_na_midia===false?0:1;};
+ if(cur.k==='L'){
+  const el=$(cur.id);el.style.visibility='visible';animLight(el,lt);full.style.clipPath='none';
+  if(prev&&prev.k==='F'&&lt<.5){const p=eIO(seg(lt,0,.5));full.style.visibility='visible';full.style.zIndex=1;light.style.zIndex=2;drawFull(prev,prev.b-prev.a+lt);
+   light.style.clipPath=`inset(${(1-p)*100}% 0 0 0)`;$('edge').style.opacity=1;$('edge').style.top=((1-p)*1920-12)+'px';full.style.transform=`translateY(${-p*200}px)`;}
+  else{light.style.clipPath='none';light.style.zIndex=2;full.style.visibility='hidden';full.style.transform='none';}
+  if(prev&&prev.k==='L'&&lt<.45){const pe=$(prev.id);pe.style.visibility='visible';animLight(pe,prev.b-prev.a+lt);pe.style.opacity=1-eSine(lt/.45);el.style.opacity=eSine(lt/.45);}
+ }else{
+  full.style.visibility='visible';full.style.transform='none';drawFull(cur,lt);
+  if(prev&&prev.k==='L'&&lt<.6){const p=eIO(seg(lt,0,.6)),r=p*1450;full.style.zIndex=4;hx.style.zIndex=3;light.style.zIndex=2;light.style.clipPath='none';
+   const pe=$(prev.id);pe.style.visibility='visible';animLight(pe,prev.b-prev.a+lt);pe.style.transform=`scale(${1+p*.06})`;
+   full.style.clipPath=casa(r);hx.style.visibility='visible';hx.style.clipPath=casa(r+26);}
+  else if(!prev&&lt<.4){full.style.clipPath='none';full.style.zIndex=4;full.style.opacity=eSine(lt/.4);}
+  else{full.style.clipPath='none';full.style.zIndex=4;full.style.opacity=1;}
+  const bp=eQ(seg(lt,.3,.9));$('badge').style.transform=`translateY(${(1-bp)*-30}px)`;$('badge').style.opacity=bp*(P.marca.logo_na_midia===false?0:1);
+ }
+ await Promise.all(waits.filter(Boolean));
+};
+window.CORTES=()=>SEQ.slice(1).map(s=>s.a);
+window.ready=fetch(`${PROJ}/projeto.json`).then(r=>r.json()).then(j=>{P=j;construir();
+ return Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));}).then(()=>document.fonts.ready).then(()=>({duracao:window.DURACAO,videos:Object.keys(MEDIA),cortes:window.CORTES()}));
+</script></body></html>

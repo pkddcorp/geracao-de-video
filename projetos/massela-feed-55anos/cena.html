@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- MASSELA — post de feed 1080x1350 "+55 anos". Foto real da fachada em cima; painel azul em forma de casa (telhado do logo)
+     com o número grande, "+" amarelo e palavra-chave em placa amarela. -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Din,sans-serif;color:#fff;background:#0d1a5c}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.cond{font-stretch:75%;font-weight:700;text-transform:uppercase}
+#foto{position:absolute;left:0;top:0;width:1080px;height:820px;object-fit:cover;object-position:50% 16%;filter:brightness(1.03) contrast(1.06) saturate(1.05)}
+#painel{position:absolute;inset:0}
+.placa{display:inline-block;position:relative;background:#f4b31a;color:#0d1a5c;padding:.17em .24em .06em}
+.placa::after{content:'';position:absolute;right:-1px;top:-1px;width:.34em;height:.12em;background:#fff}
+.lgp{position:absolute;left:48px;top:48px;background:#fff;border-radius:12px;padding:14px 18px 10px;box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.lgp img{width:210px;display:block}
+</style></head><body>
+<div id="stage">
+ <img id="foto" src="assets/fachada.jpg">
+ <svg id="painel" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#18298a"/><stop offset="1" stop-color="#0d1a5c"/></linearGradient>
+   <pattern id="gr" width="90" height="90" patternUnits="userSpaceOnUse"><path d="M90 0H0V90" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="3"/></pattern></defs>
+  <polygon points="-10,780 540,560 1090,780 1090,1360 -10,1360" fill="url(#g)"/>
+  <polygon points="-10,780 540,560 1090,780 1090,1360 -10,1360" fill="url(#gr)"/>
+  <polyline points="-30,790 540,558 1110,790" fill="none" stroke="#f4b31a" stroke-width="22" stroke-linejoin="miter"/>
+ </svg>
+ <div class="abs center cond" style="top:640px;font-size:300px;line-height:.9;letter-spacing:-.01em"><span style="color:#f4b31a">+</span>55</div>
+ <div class="abs center cond" style="top:925px;font-size:92px;line-height:1">Anos no mercado</div>
+ <div class="abs center cond" style="top:1025px;font-size:92px;line-height:1"><span class="placa">de tradição</span></div>
+ <div class="abs center" style="top:1188px;font-size:30px;letter-spacing:.04em;opacity:.85">Rua Cristóvão Diniz, 160 · Jd. do Estádio · Itu – SP</div>
+ <div class="abs center" style="top:1240px;font-size:28px;letter-spacing:.24em;font-weight:600;color:#f4b31a">@DEPOSITOMASSELA</div>
+</div>
+<script>
+window.render=async()=>{};
+window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(()=>({duracao:1,videos:[],cortes:[]}));
+</script></body></html>

@@ -1,0 +1,26 @@
+{
+ "marca": { "nome": "Bordão Pizzaria", "logo": "assets/logo.png", "instagram": "@pizzariabordao", "endereco": "Rua da Convenção, 832 · Vila Leis · Itu" },
+ "tema": {
+  "fundo": ["#157040", "#0b4a26"], "texto": "#fff8ea", "suave": "rgba(255,248,234,.78)",
+  "acento": "#e0312b", "acento_txt": "#ffffff", "acento_escuro": "#8e1b17", "anel": "#fff8ea",
+  "alt": ["#e0312b", "#a81f1a"], "alt_acento": "#ffffff", "alt_acento_txt": "#c42720",
+  "destaque": "placa", "textura": "pontos", "textura_cor": "rgba(255,255,255,.06)", "transicao": "empurra",
+  "fonte_titulo": "assets/fontes/rockb.ttf", "fonte_texto": "assets/fontes/Poppins-Bold.ttf", "fonte_pitch": "assets/fontes/Poppins-Medium.ttf",
+  "faixa": "PIZZARIA · ITU", "arroba": "#fff8ea"
+ },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "abertura", "dur": 2.8, "kicker": "Vila Leis · Itu", "titulo": "Bateu fome de", "destaque": "pizza?", "tamanho": 124 },
+  { "tipo": "midia", "dur": 3.4, "titulo": "Recheio e", "destaque": "qualidade",
+    "itens": [ { "arquivo": "assets/quatroqueijos.jpg", "de": [0.5, 0.72, 0.8], "para": [0.5, 0.7, 0.62] },
+               { "arquivo": "assets/meia.jpg", "de": [0.5, 0.7, 0.62], "para": [0.5, 0.72, 0.78] } ] },
+  { "tipo": "frase", "dur": 3.0, "kicker": "Todas as pizzas", "titulo": "vêm com borda de", "destaque": "catupiry com gergelim", "tamanho": 90 },
+  { "tipo": "midia", "dur": 2.6, "titulo": "Novidade:", "destaque": "pizza Detroit",
+    "itens": [ { "arquivo": "assets/detroit.jpg", "de": [0.5, 0.68, 0.78], "para": [0.5, 0.66, 0.6] } ] },
+  { "tipo": "ponto", "dur": 3.0, "alt": true, "kicker": "Quarta a segunda", "numero": "16h às 00h", "tam_numero": 170,
+    "texto": "Rua da Convenção, 832 · **Vila Leis**" },
+  { "tipo": "final", "dur": 4.2, "titulo": "Peça a sua", "destaque": "agora!", "texto": "WhatsApp **(11) 4024-0029**", "botao": "PEÇA PELO WHATSAPP" },
+  { "tipo": "pitch", "dur": 5.0, "linhas": ["Fiz esse vídeo só com as fotos", "que já estão no perfil de vocês."],
+    "destaque": "Imagina isso toda semana, com a pizza saindo do forno.", "chamada": "BORA?" }
+ ]
+}

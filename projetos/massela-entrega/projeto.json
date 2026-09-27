@@ -1,0 +1,21 @@
+{
+ "marca": {
+  "nome": "Depósito Massela",
+  "logo": "assets/logo.png",
+  "instagram": "@depositomassela",
+  "whatsapp": "(11) 99566-6038"
+ },
+ "rota": ["PEDIDO", "SEPARAÇÃO", "ENTREGA"],
+ "cenas": [
+  { "tipo": "abertura", "dur": 3.0, "kicker": "Como funciona", "titulo": "Do pedido", "destaque": "à sua obra" },
+  { "tipo": "passo", "dur": 3.2, "passo": 1, "kicker": "Passo 1", "titulo": "Você chama", "destaque": "no WhatsApp",
+    "mensagem": "Olá! Quero um orçamento de material!" },
+  { "tipo": "midia", "dur": 3.4, "passo": 2, "titulo": "Separamos", "destaque": "seu material",
+    "itens": [ { "arquivo": "assets/galpao.mp4", "zoom": [1.0, 1.06] },
+               { "arquivo": "assets/sacaria.mp4", "zoom": [1.06, 1.0] } ] },
+  { "tipo": "midia", "dur": 2.6, "passo": 3, "titulo": "Entregamos", "destaque": "na sua obra",
+    "itens": [ { "arquivo": "assets/caminhao.mp4", "zoom": [1.0, 1.07] } ] },
+  { "tipo": "checklist", "dur": 3.6, "kicker": "Fazemos entregas de", "itens": ["Areia", "Pedra", "Cimento", "Tijolos", "Ferros"] },
+  { "tipo": "final", "dur": 4.2, "titulo": "Peça pelo", "destaque": "WhatsApp", "botao": "PEÇA SEU ORÇAMENTO" }
+ ]
+}

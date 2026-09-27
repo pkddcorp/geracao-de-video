@@ -1,0 +1,130 @@
+{
+ "marca": {
+  "nome": "Prestes Restaurante",
+  "logo": "assets/logo.png",
+  "instagram": "@prestesrestauranteitu"
+ },
+ "tema": {
+  "fundo": [
+   "#1c1713",
+   "#0c0a08"
+  ],
+  "texto": "#f4ead6",
+  "suave": "rgba(244,234,214,.72)",
+  "acento": "#d4ad55",
+  "acento_txt": "#1a1410",
+  "acento_escuro": "#7a5d1e",
+  "anel": "#d4ad55",
+  "destaque": "placa",
+  "textura": "pontos",
+  "textura_cor": "rgba(212,173,85,.08)",
+  "transicao": "dissolve",
+  "fonte_titulo": "assets/fontes/Lora-Variable.ttf",
+  "titulo_css": "font-weight:700",
+  "fonte_texto": "assets/fontes/Poppins-Medium.ttf",
+  "fonte_pitch": "assets/fontes/Poppins-Medium.ttf",
+  "faixa": "RESTAURANTE & MARMITARIA"
+ },
+ "pitch": true,
+ "cenas": [
+  {
+   "tipo": "abertura",
+   "dur": 2.8,
+   "kicker": "Itu",
+   "titulo": "Almoço de verdade",
+   "destaque": "é no Prestes",
+   "tamanho": 112
+  },
+  {
+   "tipo": "midia",
+   "dur": 4.2,
+   "titulo": "Buffet",
+   "destaque": "completo",
+   "itens": [
+    {
+     "arquivo": "assets/salao.mp4"
+    },
+    {
+     "arquivo": "assets/costela.mp4"
+    },
+    {
+     "arquivo": "assets/paoalho.mp4"
+    }
+   ]
+  },
+  {
+   "tipo": "ponto",
+   "dur": 3,
+   "kicker": "Toda sexta-feira",
+   "numero": "R$ 56,90",
+   "tam_numero": 210,
+   "titulo": "Churrasco",
+   "destaque": "à vontade",
+   "texto": "no buffet do **Prestes**"
+  },
+  {
+   "tipo": "lista",
+   "dur": 5,
+   "kicker": "A semana no Prestes",
+   "titulo": "Tem pra",
+   "destaque": "todo gosto",
+   "tamanho": 100,
+   "itens": [
+    [
+     "Segunda a quinta",
+     "Buffet completo",
+     "R$ 51,90"
+    ],
+    [
+     "Sexta-feira",
+     "Churrasquinho",
+     "R$ 56,90"
+    ],
+    [
+     "Sábado",
+     "Buffet gourmet",
+     "R$ 67,90"
+    ]
+   ]
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.4,
+   "titulo": "E pra fechar,",
+   "destaque": "um docinho",
+   "itens": [
+    {
+     "arquivo": "assets/doce.jpg",
+     "de": [
+      0.42,
+      0.68,
+      0.52
+     ],
+     "para": [
+      0.42,
+      0.66,
+      0.46
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "final",
+   "dur": 4.2,
+   "titulo": "Peça sua",
+   "destaque": "marmitex",
+   "texto": "pelo **WhatsApp**",
+   "botao": "CHAMA A GENTE"
+  },
+  {
+   "tipo": "pitch",
+   "dur": 5,
+   "linhas": [
+    "Vocês já postam toda semana.",
+    "Faltava o movimento."
+   ],
+   "destaque": "Imagina o cardápio da semana assim, toda segunda.",
+   "chamada": "BORA?"
+  }
+ ]
+}

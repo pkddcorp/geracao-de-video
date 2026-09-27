@@ -1,0 +1,11 @@
+{
+  "name": "estudio-videos",
+  "private": true,
+  "description": "Ferramenta pessoal para criar vídeos de Instagram com Claude Code + Playwright + FFmpeg",
+  "scripts": {
+    "previa": "node motor/render.js",
+    "final": "node motor/render.js --final",
+    "instalar": "npx playwright install chromium"
+  },
+  "dependencies": { "playwright": "^1.47.0" }
+}

@@ -1,0 +1,15 @@
+{
+ "marca": { "nome": "Hioki Sushi Itu", "logo": "assets/logo.png", "instagram": "@hiokiitu", "endereco": "Praça Lions, 88 · Itu" },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "gancho", "dur": 2.6, "linha": "Bateu vontade de", "palavra": "SUSHI?" },
+  { "tipo": "foto", "dur": 2.6, "entrada": "circulo", "arquivo": "assets/salmao-pedra.jpg", "posicao": "50% 62%", "zoom": [1.12, 1.0], "legenda": "Salmão na pedra de sal" },
+  { "tipo": "split", "dur": 3.0, "entrada": "cortina", "cima": "assets/niguiri.jpg", "baixo": "assets/temaki2.jpg", "palavras": ["Frescor", "Técnica", "Apresentação"] },
+  { "tipo": "video", "dur": 2.8, "entrada": "dissolve", "arquivo": "assets/barco.mp4", "linha": "O mais completo", "destaque": "rodízio da região" },
+  { "tipo": "menu", "dur": 3.0, "entrada": "cortina", "fundo": "assets/espetaculo.jpg", "itens": ["Delivery", "Rodízio", "À la carte"], "rodape": "todos os dias" },
+  { "tipo": "foto", "dur": 2.4, "entrada": "circulo", "arquivo": "assets/drink.jpg", "posicao": "40% 60%", "zoom": [1.0, 1.1], "legenda": "Drinks da casa", "vertical": true },
+  { "tipo": "final", "dur": 4.0, "entrada": "dissolve", "botao": "PEÇA PELO DELIVERY", "linha": "ou venha comer com a gente" },
+  { "tipo": "pitch", "dur": 5.0, "entrada": "dissolve",
+    "linhas": ["Vocês já têm fotos incríveis.", "Faltava movimento."], "destaque": "Imagina isso toda semana no perfil de vocês.", "chamada": "BORA?" }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "marca": { "nome": "Smash House", "logo": "assets/logo.png", "instagram": "@smashhouse.itu", "endereco": "Av. Ermelindo Maffei, 35 · Itu" },
+ "tema": {
+  "fundo": ["#f6ead2", "#e9d4ad"], "texto": "#151515", "suave": "#6b5a40",
+  "acento": "#f5b400", "acento_txt": "#151515", "acento_escuro": "#f5b400", "anel": "#151515",
+  "alt": ["#151515", "#0a0a0a"], "alt_acento": "#f5b400", "alt_acento_txt": "#151515",
+  "destaque": "sublinhado", "textura": "papel", "transicao": "dissolve", "arroba": "#151515", "botao_bg": "#151515", "botao_txt": "#f5b400",
+  "fonte_titulo": "assets/fontes/bahnschrift.ttf", "titulo_css": "font-weight:700;font-stretch:75%;text-transform:uppercase",
+  "fonte_texto": "assets/fontes/Poppins-Bold.ttf", "fonte_pitch": "assets/fontes/Poppins-Medium.ttf",
+  "faixa": "HAMBURGUERIA · ITU"
+ },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "abertura", "dur": 2.8, "kicker": "Smash House · Itu", "titulo": "A receita do", "destaque": "smash perfeito", "tamanho": 140 },
+  { "tipo": "lista", "dur": 4.2, "kicker": "Anota aí", "titulo": "Passo a", "destaque": "passo", "tamanho": 130, "numerar": true,
+    "itens": [ ["Passo 1", "Pão seladinho"], ["Passo 2", "Carne smash na chapa"], ["Passo 3", "Crostinha perfeita"] ] },
+  { "tipo": "midia", "dur": 3.0, "titulo": "Crocante por fora,", "destaque": "suculento por dentro", "tamanho": 84,
+    "itens": [ { "arquivo": "assets/burger.mp4" } ] },
+  { "tipo": "midia", "dur": 2.6, "titulo": "Combo", "destaque": "Top Smash",
+    "itens": [ { "arquivo": "assets/combo.jpg", "de": [0.5, 0.66, 0.4], "para": [0.5, 0.64, 0.34] } ] },
+  { "tipo": "frase", "dur": 3.0, "alt": true, "kicker": "Novidade", "titulo": "Açaí", "destaque": "do seu jeito", "tamanho": 160,
+    "texto": "Monte o seu como quiser." },
+  { "tipo": "lista", "dur": 3.8, "kicker": "Horários", "titulo": "Aberto", "destaque": "todo dia", "tamanho": 140,
+    "itens": [ ["Segunda a sexta", "11h às 22h"], ["Sábado e domingo", "17h30 às 22h"] ] },
+  { "tipo": "final", "dur": 4.2, "titulo": "Peça já", "destaque": "o seu!", "texto": "Telefone **(11) 4023-2825**", "botao": "CARDÁPIO NO LINK DA BIO" },
+  { "tipo": "pitch", "dur": 5.0, "linhas": ["Um smash desses é bom demais", "pra ficar parado numa foto."],
+    "destaque": "Imagina o perfil de vocês com vídeos assim toda semana.", "chamada": "BORA?" }
+ ]
+}

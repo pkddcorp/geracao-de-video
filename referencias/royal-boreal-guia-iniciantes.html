@@ -1,0 +1,138 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Poppins,sans-serif;color:#1a1714}
+.abs{position:absolute}.scene{position:absolute;inset:0;opacity:0}
+.serif{font-family:Lora,serif;font-weight:400}.center{left:0;right:0;text-align:center}
+.kick{font-size:30px;letter-spacing:.38em;text-transform:uppercase;color:#a8842a;font-weight:500;padding-left:.38em}
+.ln{overflow:hidden;display:block;padding-bottom:.1em}.ln>span{display:inline-block}
+.gold{background:linear-gradient(100deg,#8a6b1f 0%,#b8912a 30%,#e6c86e 48%,#b8912a 66%,#8a6b1f 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.rule{position:absolute;height:2px;background:linear-gradient(90deg,rgba(184,145,42,0),#b8912a,rgba(184,145,42,0))}
+/* lista de estilos */
+.st{position:absolute;left:90px;right:90px;height:196px;display:flex;align-items:center;border-radius:28px;padding:0 40px 0 30px;background:rgba(255,255,255,.0);border:1.5px solid rgba(184,145,42,0)}
+.st .bt{width:150px;height:170px;display:flex;align-items:flex-end;justify-content:center;flex:none}
+.st .bt img{max-height:170px;max-width:150px}
+.st .tx{margin-left:34px;flex:1}
+.st .nm{font-family:Lora,serif;font-size:64px;line-height:1}
+.st .ds{font-size:30px;color:#6f675b;font-weight:300;margin-top:10px}
+.st .ex{font-size:24px;color:#a8842a;letter-spacing:.2em;text-transform:uppercase;margin-top:10px;font-weight:500}
+.st .num{font-family:Lora,serif;font-style:italic;font-size:44px;color:#b8912a;width:60px;flex:none}
+/* frascos kit */
+.vial{position:absolute;top:760px;width:120px}
+/* chat */
+.bub{position:absolute;max-width:760px;padding:30px 40px;font-size:40px;line-height:1.35;border-radius:40px;box-shadow:0 10px 30px rgba(60,45,20,.10)}
+.me{right:90px;background:#efe2bd;border-bottom-right-radius:10px}
+.them{left:90px;background:#fff;border-bottom-left-radius:10px}
+.dots{display:flex;gap:12px;padding:6px 4px}.dots i{width:16px;height:16px;border-radius:50%;background:#b8a988;display:block}
+.cta{position:absolute;left:50%;padding:36px 70px;border-radius:999px;background:#1a1714;color:#f6efdc;font-size:40px;letter-spacing:.16em;font-weight:500;white-space:nowrap;overflow:hidden;box-shadow:0 18px 50px rgba(60,45,20,.22)}
+.cta em{font-style:normal;color:#e0c26a}
+.cta .sh{position:absolute;top:0;bottom:0;width:160px;background:linear-gradient(100deg,transparent,rgba(255,240,200,.35),transparent);transform:skewX(-20deg)}
+</style></head><body>
+<div id="stage">
+ <div class="abs" style="inset:0;background:linear-gradient(180deg,#fdfcf8 0%,#f7f3ea 60%,#efe8d9 100%)"></div>
+ <div class="abs" id="glow" style="width:1400px;height:1400px;border-radius:50%;background:radial-gradient(circle,rgba(230,200,110,.26),rgba(230,200,110,0) 60%)"></div>
+ <div class="abs" style="inset:44px;border:1.5px solid rgba(184,145,42,.35)"></div>
+
+ <!-- S1 gancho -->
+ <div class="scene" id="s1">
+  <div class="abs center serif" style="top:620px;font-size:118px;line-height:1.1">
+   <span class="ln"><span id="a1">Não entende</span></span><span class="ln"><span id="a2">nada de perfume?</span></span></div>
+  <div class="abs center serif" style="top:930px;font-size:190px;font-style:italic"><span class="ln"><span id="a3" class="gold">Tudo bem.</span></span></div>
+  <div class="abs center" style="top:1200px;font-size:40px;color:#6f675b;font-weight:300"><span class="ln"><span id="a4">A gente te mostra por onde começar.</span></span></div>
+ </div>
+
+ <!-- S2 estilos -->
+ <div class="scene" id="s2">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k2">Passo 1</span></span></div>
+  <div class="abs center serif" style="top:350px;font-size:96px;line-height:1.1"><span class="ln"><span id="b1">Escolha seu <i class="gold">estilo</i></span></span></div>
+  <div id="list"></div>
+ </div>
+
+ <!-- S3 kit -->
+ <div class="scene" id="s3">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k3">Passo 2 · ainda na dúvida?</span></span></div>
+  <div class="abs center serif" style="top:350px;font-size:104px;line-height:1.1"><span class="ln"><span id="c1">Teste antes</span></span><span class="ln"><span id="c2">de <i class="gold">comprar</i></span></span></div>
+  <div id="vials"></div>
+  <div class="abs center serif" style="top:1150px;font-size:74px"><span class="ln"><span id="c3">Kit Descoberta</span></span></div>
+  <div class="abs center" style="top:1250px;font-size:38px;color:#6f675b;font-weight:300"><span class="ln"><span id="c4">4 perfumes originais de 2ml · <b style="color:#1a1714;font-weight:600">R$ 89,90</b></span></span></div>
+  <div class="rule" id="r3" style="top:1345px;left:390px;width:300px"></div>
+  <div class="abs center" style="top:1375px;font-size:34px;color:#a8842a;font-weight:400"><span class="ln"><span id="c5">Use alguns dias e descubra qual é a sua cara</span></span></div>
+ </div>
+
+ <!-- S4 chat -->
+ <div class="scene" id="s4">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k4">Passo 3</span></span></div>
+  <div class="abs center serif" style="top:350px;font-size:96px;line-height:1.1"><span class="ln"><span id="d0">Pergunte pra gente</span></span></div>
+  <div class="bub me" id="m1" style="top:560px">Nunca comprei perfume importado. Qual você indica?</div>
+  <div class="bub them" id="m2" style="top:790px"><div class="dots" id="typ"><i></i><i></i><i></i></div><div id="m2t" style="display:none">Me conta: você gosta de algo mais <b>leve</b> ou mais <b>marcante</b>? A gente te ajuda a escolher ✨</div></div>
+  <div class="cta" id="cta" style="top:1150px">CHAMA NO <em>WHATSAPP</em><div class="sh" id="ctash"></div></div>
+  <div class="abs center" id="brand" style="top:1300px"><div class="serif" style="font-size:52px;letter-spacing:.22em;padding-left:.22em">ROYAL BOREAL</div><div class="kick" style="font-size:26px;color:#6f675b;margin-top:10px">@royal_boreal</div></div>
+ </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const eBack=p=>{const c=1.4,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+const lerp=(a,b,p)=>a+(b-a)*p;
+const S=[['s1',0,3.2],['s2',3.2,9.0],['s3',9.0,12.8],['s4',12.8,17]];
+const ST=[['acqua-di-gio','Fresco','Leve e limpo, pro dia a dia','Ex.: Acqua di Giò'],
+ ['la-vie-est-belle','Doce','Envolvente, fica na memória','Ex.: La Vie Est Belle'],
+ ['bleu-de-chanel','Elegante','Clássico, pro trabalho e eventos','Ex.: Bleu de Chanel'],
+ ['black-opium','Marcante','Intenso, perfeito pra noite','Ex.: Black Opium']];
+ST.forEach((s,i)=>{const d=document.createElement('div');d.className='st';d.style.top=(560+i*222)+'px';
+ d.innerHTML=`<div class="num">${i+1}</div><div class="bt"><img src="fotos/${s[0]}.png"></div><div class="tx"><div class="nm">${s[1]}</div><div class="ds">${s[2]}</div><div class="ex">${s[3]}</div></div>`;$('list').appendChild(d);});
+// frascos decant (svg proprio)
+const COL=['#cfe3d8','#f3c6c9','#2d3a5c','#3a2530'];
+COL.forEach((c,i)=>{const v=document.createElement('div');v.className='vial';v.style.left=(540-2*150+i*150+15)+'px';
+ v.innerHTML=`<svg viewBox="0 0 60 200" width="120" height="400"><defs><linearGradient id="gc${i}" x1="0" x2="1"><stop offset="0" stop-color="#8a6b1f"/><stop offset=".4" stop-color="#e6c86e"/><stop offset="1" stop-color="#8a6b1f"/></linearGradient>
+ <linearGradient id="gl${i}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".3" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></linearGradient></defs>
+ <ellipse cx="30" cy="196" rx="24" ry="3" fill="#3c2d14" opacity=".18"/>
+ <rect x="18" y="4" width="24" height="40" rx="4" fill="url(#gc${i})"/><rect x="21" y="44" width="18" height="8" fill="#c9b37a"/>
+ <rect x="12" y="52" width="36" height="142" rx="8" fill="#fff" opacity=".6" stroke="#d9cfb8" stroke-width="1"/>
+ <rect id="lq${i}" x="14" y="80" width="32" height="112" rx="6" fill="${c}"/>
+ <rect x="12" y="52" width="36" height="142" rx="8" fill="url(#gl${i})"/>
+ <rect x="14" y="118" width="32" height="40" fill="#fdfaf1" opacity=".92"/><text x="30" y="143" text-anchor="middle" font-family="Lora" font-size="11" fill="#8a6b1f">RB</text></svg>`;$('vials').appendChild(v);});
+
+const rev=(id,t,st,d=.9)=>{const p=eQ(seg(t,st,st+d));$(id).style.transform=`translateY(${(1-p)*110}%)`;};
+window.render=function(t){
+ $('glow').style.transform=`translate(${-160+Math.sin(t*.35)*60}px,${300+Math.cos(t*.3)*60}px)`;
+ S.forEach(([id,a,b],i)=>{const inP=i==0?1:eSine(seg(t,a,a+.55)),outP=i==S.length-1?0:eSine(seg(t,b-.45,b));
+  const el=$(id);el.style.opacity=Math.min(inP,1-outP);el.style.transform=`translateY(${-outP*40}px) scale(${1+.015*seg(t,a,b)})`;el.style.visibility=(t<a-.01||t>b+.01)?'hidden':'visible';});
+ // S1
+ rev('a1',t,0,.8);rev('a2',t,.18,.8);rev('a3',t,.9,1.0);rev('a4',t,1.5,.8);
+ $('a3').style.backgroundPosition=`${lerp(100,0,eIO(seg(t,1.1,2.8)))}% 0`;
+ // S2
+ const t2=t-3.2;rev('k2',t2,.1,.8);rev('b1',t2,.2,.9);
+ $('b1').querySelector('.gold').style.backgroundPosition=`${lerp(100,0,eIO(seg(t2,.5,2)))}% 0`;
+ const rows=[...$('list').children];const act=Math.floor((t2-1.1)/1.1);
+ rows.forEach((r,i)=>{const a=.55+i*.18;const p=eQ(seg(t2,a,a+.8));
+  const on=t2>=1.1+i*1.1-.15&&(i==3||t2<1.1+(i+1)*1.1-.15);const hp=on?1:0;
+  const hi=eSine(cl(1-Math.abs(t2-(1.1+i*1.1+.4))/.75)); // 0..1 destaque suave
+  const lt=t2>=4.95?1:0; // no fim, todos acesos
+  const h=Math.max(hi,lt*eSine(seg(t2,4.95,5.4)));
+  r.style.opacity=p*lerp(.45,1,Math.max(h,t2<1?1:0));
+  r.style.transform=`translateX(${(1-p)*80}px) scale(${1+.03*hi})`;
+  r.style.background=`rgba(255,255,255,${.85*hi})`;r.style.borderColor=`rgba(184,145,42,${.55*hi})`;
+  r.style.boxShadow=`0 16px 40px rgba(60,45,20,${.12*hi})`;
+  r.querySelector('img').style.transform=`translateY(${-8*hi}px) rotate(${-3*hi}deg)`;});
+ // S3
+ const t3=t-9.0;rev('k3',t3,.1,.8);rev('c1',t3,.2);rev('c2',t3,.38);
+ $('c2').querySelector('.gold').style.backgroundPosition=`${lerp(100,0,eIO(seg(t3,.6,2)))}% 0`;
+ [...$('vials').children].forEach((v,i)=>{const p=eBack(seg(t3,.55+i*.13,1.25+i*.13));v.style.opacity=cl(seg(t3,.55+i*.13,.8+i*.13));
+  v.style.transform=`translateY(${(1-p)*120+Math.sin(t*1.6+i)*5}px)`;
+  const fp=eQ(seg(t3,.8+i*.13,1.8+i*.13));const lq=$('lq'+i);const H=112*fp;lq.setAttribute('y',192-H);lq.setAttribute('height',H);});
+ rev('c3',t3,1.3);rev('c4',t3,1.5);$('r3').style.transform=`scaleX(${eQ(seg(t3,1.7,2.4))})`;rev('c5',t3,1.9);
+ // S4
+ const t4=t-12.8;rev('k4',t4,.1,.8);rev('d0',t4,.2);
+ const m1=eBack(seg(t4,.55,1.05));$('m1').style.opacity=cl(seg(t4,.55,.75));$('m1').style.transform=`scale(${lerp(.85,1,m1)})`;$('m1').style.transformOrigin='100% 100%';
+ const m2=eBack(seg(t4,1.25,1.7));$('m2').style.opacity=cl(seg(t4,1.25,1.45));$('m2').style.transform=`scale(${lerp(.85,1,m2)})`;$('m2').style.transformOrigin='0 100%';
+ const typing=t4<2.3;$('typ').style.display=typing?'flex':'none';$('m2t').style.display=typing?'none':'block';
+ [...$('typ').children].forEach((d,i)=>{d.style.transform=`translateY(${-8*Math.max(0,Math.sin(t4*9-i*.9))}px)`;});
+ const cp=eQ(seg(t4,2.7,3.4));$('cta').style.opacity=cp;$('cta').style.transform=`translateX(-50%) translateY(${(1-cp)*30}px)`;
+ $('ctash').style.left=`${lerp(-220,760,eIO(seg(t4,3.3,4.1)))}px`;
+ const bp=eQ(seg(t4,3.0,3.7));$('brand').style.opacity=bp;$('brand').style.transform=`translateY(${(1-bp)*20}px)`;
+};
+window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready);
+</script></body></html>

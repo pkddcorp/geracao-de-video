@@ -1,0 +1,22 @@
+{
+ "marca": {
+  "nome": "Personalê 3D",
+  "logo": "assets/logo.png",
+  "simbolo": "assets/no.png",
+  "instagram": "@personale.3d",
+  "whatsapp": "(11) 99256-8676"
+ },
+ "pergunta": ["Qual nome", "vai no seu?"],
+ "cenas": [
+  { "tipo": "gancho", "dur": 2.4, "rodape": "Chaveiro personalizado em impressão 3D" },
+  { "tipo": "nome", "dur": 3.0, "nome": ["Nicole"], "cor": "vermelho",
+    "foto": "assets/nomes.png", "recorte": [740, 477, 700, 427], "legenda": ["Você imagina...", "a Personalê cria!"] },
+  { "tipo": "nome", "dur": 2.5, "nome": ["Lorena"], "cor": "vermelho",
+    "foto": "assets/nomes.png", "recorte": [480, 950, 760, 463], "legenda": ["Presente", "com o nome dela"] },
+  { "tipo": "nome", "dur": 3.0, "nome": ["José", "Augusto"], "cor": "branco",
+    "foto": "assets/jose.png", "recorte": [216, 590, 996, 607], "legenda": ["Cor e detalhe", "do seu jeito"] },
+  { "tipo": "tres", "dur": 3.2, "titulo": "E ainda é", "destaque": "3 em 1",
+    "itens": [["chave", "Chaveiro"], ["lata", "Abre lata"], ["suporte", "Suporte de celular"]] },
+  { "tipo": "final", "dur": 4.2, "titulo": "Manda o nome,", "destaque": "a gente imprime!", "botao": "PEÇA O SEU AGORA" }
+ ]
+}

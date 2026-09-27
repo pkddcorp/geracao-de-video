@@ -1,0 +1,23 @@
+{
+  "marca": {
+    "nome": "Fame Di Piadinas",
+    "logo": "assets/logo.png",
+    "instagram": "@famedi.sorocaba",
+    "faixa_italia": true,
+    "cores": { "fundo1": "#fbf6ec", "fundo2": "#ede2d0", "texto": "#1c2b45", "destaque": "#b8912a", "destaque_claro": "#e6c86e", "destaque_escuro": "#8a6b1f" }
+  },
+  "cenas": [
+    { "tipo": "abertura", "dur": 2.8, "kicker": "Novidade na Fame Di", "titulo": "Agora tem", "destaque": "pizza." },
+    { "tipo": "midia", "dur": 2.6, "itens": [ { "arquivo": "assets/fatia.mp4" } ] },
+    { "tipo": "ponto", "dur": 2.4, "numero": "01", "kicker": "A massa", "titulo": "Fina e levemente", "destaque": "crocante" },
+    { "tipo": "midia", "dur": 3.0, "itens": [ { "arquivo": "assets/dobra.mp4", "inicio": 1.2 } ] },
+    { "tipo": "ponto", "dur": 2.2, "numero": "02", "kicker": "A borda", "titulo": "Finalizada com", "destaque": "parmesão" },
+    { "tipo": "midia", "dur": 2.2, "itens": [ { "arquivo": "assets/pizza8.jpg", "posicao": "70% 30%", "zoom": [1.1, 1.3] } ] },
+    { "tipo": "ponto", "dur": 2.8, "numero": "03", "kicker": "O nosso segredo", "titulo": "Sem orégano.", "destaque": "De propósito.", "texto": "Pra cada sabor ter seu próprio sabor e aroma." },
+    { "tipo": "midia", "dur": 5.2, "itens": [ { "arquivo": "assets/pizza7.jpg" }, { "arquivo": "assets/pizza5.jpg", "posicao": "50% 40%" }, { "arquivo": "assets/pizza1.jpg", "posicao": "50% 45%" }, { "arquivo": "assets/pizza9.jpg" } ] },
+    { "tipo": "lista", "dur": 5.0, "kicker": "Cardápio de pizzas", "titulo": "Nossos", "destaque": "sabores",
+      "itens": [["Bauru","R$ 69,90"],["Napolitana","R$ 69,90"],["Marguerita","R$ 69,90"],["Fado","R$ 79,90"],["Zucchine","R$ 84,90"],["Carijó","R$ 84,90"],["Vegetariana","R$ 84,90"],["Tarê","R$ 89,90"]],
+      "rodape": "Massa fina · borda com parmesão · sem orégano" },
+    { "tipo": "final", "dur": 3.6, "titulo": "Pizza", "destaque": "Fame Di", "texto": "8 sabores a partir de **R$ 69,90**", "botao": "PEÇA AGORA NO IFOOD", "selo": "assets/ifood.png" }
+  ]
+}

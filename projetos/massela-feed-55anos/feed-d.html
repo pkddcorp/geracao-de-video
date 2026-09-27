@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- VARIAÇÃO D — "Planta": fundo azul de planta técnica, fotos reais emolduradas com linhas de cota e carimbo de projeto. -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Din,sans-serif;color:#fff;background:linear-gradient(160deg,#1a2c8f,#0b1650)}
+.grade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:90px 90px,90px 90px,18px 18px,18px 18px}
+.abs{position:absolute}
+.cond{font-stretch:75%;font-weight:700;text-transform:uppercase}
+.ph{position:absolute;overflow:hidden;outline:3px solid rgba(255,255,255,.9);outline-offset:8px}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
+.cota{font-size:22px;letter-spacing:.25em;font-weight:600;fill:#fff}
+.placa{display:inline-block;position:relative;background:#f4b31a;color:#0d1a5c;padding:.17em .24em .06em}
+.placa::after{content:'';position:absolute;right:-1px;top:-1px;width:.34em;height:.12em;background:#fff}
+.stamp{position:absolute;right:64px;top:1030px;width:440px;border:3px solid #fff;font-size:21px;letter-spacing:.08em;white-space:nowrap}
+.stamp div{display:flex;border-top:2px solid rgba(255,255,255,.6)}.stamp div:first-child{border-top:0}
+.stamp b{width:110px;padding:12px 14px;border-right:2px solid rgba(255,255,255,.6);font-weight:600;opacity:.75}
+.stamp span{padding:12px 14px;font-weight:700}
+</style></head><body>
+<div id="stage">
+ <div class="grade"></div>
+ <div class="ph" style="left:100px;top:130px;width:880px;height:470px"><img src="assets/galpao.jpg" style="object-position:50% 40%;filter:brightness(1.35) contrast(1.05) saturate(1.1)"></div>
+ <div class="ph" style="left:100px;top:640px;width:420px;height:300px"><img src="assets/lateral.jpg" style="object-position:50% 20%"></div>
+ <div class="ph" style="left:560px;top:640px;width:420px;height:300px"><img src="assets/sacaria.jpg" style="object-position:50% 45%"></div>
+ <svg class="abs" style="inset:0" width="1080" height="1350" overflow="visible">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0 5L10 0v10z" fill="#f4b31a"/></marker></defs>
+  <g stroke="#f4b31a" stroke-width="3">
+   <line x1="100" y1="92" x2="980" y2="92" marker-start="url(#a)" marker-end="url(#a)"/><line x1="100" y1="78" x2="100" y2="112"/><line x1="980" y1="78" x2="980" y2="112"/>
+   <line x1="52" y1="130" x2="52" y2="940" marker-start="url(#a)" marker-end="url(#a)"/><line x1="38" y1="130" x2="72" y2="130"/><line x1="38" y1="940" x2="72" y2="940"/>
+  </g>
+  <rect x="440" y="76" width="200" height="32" fill="#16288a"/><text class="cota" x="540" y="100" text-anchor="middle">GALPÃO</text>
+  <g transform="translate(58 535) rotate(-90)"><rect x="-120" y="-17" width="240" height="32" fill="#132478"/><text class="cota" x="0" y="8" text-anchor="middle">+55 ANOS</text></g>
+  <text class="cota" x="310" y="978" text-anchor="middle">LOJA</text><text class="cota" x="770" y="978" text-anchor="middle">ESTOQUE</text>
+ </svg>
+ <div class="abs cond" style="left:96px;top:1010px;font-size:190px;line-height:.95"><span style="color:#f4b31a">+</span>55</div>
+ <div class="abs cond" style="left:100px;top:1195px;font-size:64px;line-height:1"><span class="placa">anos no mercado</span></div>
+ <div class="stamp"><div><b>OBRA</b><span>DEPÓSITO MASSELA</span></div><div><b>LOCAL</b><span>ITU – SP</span></div><div><b>INSTA</b><span>@DEPOSITOMASSELA</span></div></div>
+</div>
+<script>window.render=async()=>{};window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(()=>({duracao:1,videos:[],cortes:[]}));</script>
+</body></html>

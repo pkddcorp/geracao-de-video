@@ -1,0 +1,97 @@
+{
+ "marca": {
+  "nome": "Depósito Massela",
+  "logo": "assets/logo.png",
+  "instagram": "@depositomassela",
+  "faixa_italia": false,
+  "logo_na_midia": true,
+  "cores": {
+   "fundo1": "#f8f6f1",
+   "fundo2": "#e8e3d7",
+   "texto": "#12205e",
+   "destaque": "#c98a1e",
+   "destaque_claro": "#f0c35a",
+   "destaque_escuro": "#8f5f10",
+   "texto_suave": "#5d6275"
+  }
+ },
+ "cenas": [
+  {
+   "tipo": "abertura",
+   "dur": 2.8,
+   "kicker": "Depósito Massela · Itu",
+   "titulo": "A base da sua obra",
+   "destaque": "começa aqui",
+   "tamanho": 118
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.6,
+   "itens": [
+    {
+     "arquivo": "assets/fachada.mp4",
+     "zoom": [
+      1,
+      1.08
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "ponto",
+   "dur": 2.8,
+   "escuro": true,
+   "numero": "55+",
+   "kicker": "Tradição",
+   "titulo": "Anos no mercado",
+   "destaque": "construindo sonhos",
+   "tamanho": 104,
+   "texto": "Jardim do Estádio · **Itu – SP**"
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.8,
+   "itens": [
+    {
+     "arquivo": "assets/sacaria.mp4",
+     "zoom": [
+      1,
+      1.1
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "topicos",
+   "dur": 3.4,
+   "kicker": "Tudo para o básico",
+   "itens": [
+    "Areia e pedra",
+    "Cimento e tijolos",
+    "Ferros",
+    "Caçambas|Aluguel para a sua obra"
+   ]
+  },
+  {
+   "tipo": "midia",
+   "dur": 2.4,
+   "itens": [
+    {
+     "arquivo": "assets/caminhao.mp4",
+     "zoom": [
+      1,
+      1.06
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "final",
+   "dur": 4,
+   "titulo": "Depósito",
+   "destaque": "Massela",
+   "texto": "WhatsApp **(11) 99566-6038**",
+   "botao": "PEÇA SEU ORÇAMENTO"
+  }
+ ]
+}

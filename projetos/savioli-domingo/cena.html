@@ -1,0 +1,175 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- IDENTIDADE SAVIOLI — "Cantina de almoço". Creme de papel + vermelho do logo + preto, toalha xadrez vermelha como motivo
+     (fundo/faixas, NÃO como transição — usuário achou "soco"). Troca de cena = dissolve suave. Serifa Lora com palavra-chave em
+     itálico vermelho, Poppins nos rótulos. Única foto real de prato = tela do celular no post do iFood deles (baixa resolução):
+     usada desfocada no fundo do gancho e como "foto impressa" grande na mesa. Ilustrações de prato/moto REPROVADAS (não usar).
+     Cena "pitch" no fim = recado do estúdio (estilo PKDD), desligável com "pitch": false. -->
+<style>
+@font-face{font-family:Lora;src:url(assets/fontes/Lora-Variable.ttf);font-weight:400 700}
+@font-face{font-family:Lora;src:url(assets/fontes/Lora-Italic-Variable.ttf);font-weight:400 700;font-style:italic}
+@font-face{font-family:Pop;src:url(assets/fontes/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:Pop;src:url(assets/fontes/Poppins-Bold.ttf);font-weight:700}
+@font-face{font-family:Mono;src:url(../apresentacao-pkdd/assets/fontes/consola.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+:root{--red:#b5121b;--red2:#8e0d14;--cream:#f7f0e4;--cream2:#ece0cc;--ink:#1d1a17;--sub:#6d6256}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Lora,serif;color:var(--ink);background:var(--cream)}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.S{position:absolute;inset:0;overflow:hidden;visibility:hidden}
+.S.creme{background:radial-gradient(ellipse 90% 60% at 50% 40%,#fbf6ee 0%,var(--cream) 55%,var(--cream2) 100%)}
+.S.verm{background:linear-gradient(180deg,#c0161f 0%,#8e0d14 100%);color:#fff}
+.S.escuro{background:radial-gradient(ellipse 80% 50% at 50% 35%,#2a211c 0%,#15110e 70%);color:#f7f0e4}
+.S.pkdd{background:#04050b;color:#eaf6ff;font-family:Pop,sans-serif}
+.xadrez{position:absolute;left:0;right:0;background-color:#fff;background-image:linear-gradient(90deg,rgba(181,18,27,.55) 50%,transparent 50%),linear-gradient(rgba(181,18,27,.55) 50%,transparent 50%);background-size:80px 80px}
+.papel{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1.5px);background-size:7px 7px;opacity:.6}
+.kick{font-family:Pop;font-weight:500;font-size:32px;letter-spacing:.3em;text-transform:uppercase;color:var(--sub)}
+.verm .kick,.escuro .kick{color:rgba(255,240,225,.8)}
+.T{font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.I{font-style:italic;font-weight:600;color:var(--red)}
+.verm .I{color:#ffe3a3}.escuro .I{color:#ff5a5f}
+.ln{overflow:hidden;display:block;padding:.12em 0 .06em;margin:-.12em 0 -.06em}.ln>span{display:inline-block}
+.fio{display:block;margin:0 auto;height:3px;background:var(--red)}
+.tag{display:inline-block;font-family:Pop;font-weight:700;font-size:30px;letter-spacing:.2em;text-transform:uppercase;background:var(--red);color:#fff;padding:14px 28px;border-radius:6px;box-shadow:0 10px 24px rgba(142,13,20,.3)}
+.cta{position:absolute;left:50%;padding:32px 60px;border-radius:999px;background:var(--red);color:#fff;font-family:Pop;font-weight:700;font-size:44px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;box-shadow:0 12px 0 var(--red2),0 30px 50px rgba(0,0,0,.35)}
+.cta .sh{position:absolute;top:0;bottom:0;width:170px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+#toalha{position:absolute;left:0;right:0;top:0;z-index:30;visibility:hidden;background-color:#fff;background-image:linear-gradient(90deg,rgba(181,18,27,.6) 50%,transparent 50%),linear-gradient(rgba(181,18,27,.6) 50%,transparent 50%);background-size:90px 90px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+#toalha::after{content:'';position:absolute;left:0;right:0;bottom:-18px;height:18px;background:radial-gradient(circle at 15px 0,#b5121b 8px,transparent 9px) 0 0/30px 18px repeat-x}
+.mono{font-family:Mono,monospace;letter-spacing:.08em}
+.leg{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:Lora;font-style:italic;font-weight:600;font-size:44px;color:#1d1a17}
+</style></head><body>
+<div id="stage"><div id="toalha"></div></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const eBack=p=>{const c=1.4,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+const lerp=(a,b,p)=>a+(b-a)*p;
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const rich=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+const PROJ=location.pathname.replace(/\/[^/]*$/,'');const url=f=>`${PROJ}/${f}`;
+let P,SEQ=[];
+const ln=(txt,d,cls='')=>`<span class="ln"><span class="r ${cls}" data-d="${d}">${txt}</span></span>`;
+// forma orgânica fechada (bolha) com raio variando — base das ilustrações de comida
+function bolha(cx,cy,rx,ry,n,v,seed){let s=seed;const rnd=()=>(s=(s*9301+49297)%233280)/233280;const pts=[];
+ for(let i=0;i<n;i++){const a=i/n*Math.PI*2;const k=1+(rnd()-.5)*v;pts.push([cx+Math.cos(a)*rx*k,cy+Math.sin(a)*ry*k]);}
+ let d=`M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;for(let i=0;i<n;i++){const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+  d+=`C${(p1[0]+(p2[0]-p0[0])/6).toFixed(1)} ${(p1[1]+(p2[1]-p0[1])/6).toFixed(1)} ${(p2[0]-(p3[0]-p1[0])/6).toFixed(1)} ${(p2[1]-(p3[1]-p1[1])/6).toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;}return d+'Z';}
+// prato visto de cima: parmegiana + arroz + fritas (ilustração própria)
+function prato(){let h='<defs><radialGradient id="pl" r=".5"><stop offset=".78" stop-color="#ffffff"/><stop offset=".86" stop-color="#f1ece4"/><stop offset=".93" stop-color="#fbf8f3"/><stop offset="1" stop-color="#e6ded2"/></radialGradient>'+
+ '<radialGradient id="mo" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#d1382c"/><stop offset="1" stop-color="#9c1d14"/></radialGradient>'+
+ '<radialGradient id="qj" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fff2b8"/><stop offset=".7" stop-color="#f4cf6a"/><stop offset="1" stop-color="#e2a948"/></radialGradient>'+
+ '<filter id="sb"><feGaussianBlur stdDeviation="14"/></filter><filter id="lv"><feGaussianBlur stdDeviation="1.2"/></filter></defs>';
+ h+='<ellipse cx="12" cy="26" rx="340" ry="336" fill="rgba(60,20,10,.28)" filter="url(#sb)"/><circle r="340" fill="url(#pl)"/><circle r="262" fill="none" stroke="rgba(0,0,0,.05)" stroke-width="3"/>';
+ // arroz
+ h+=`<path d="${bolha(-120,120,120,95,10,.25,7)}" fill="#fbf7ee"/>`;let s=3;const rnd=()=>(s=(s*9301+49297)%233280)/233280;
+ for(let i=0;i<150;i++){const a=rnd()*6.28,r=Math.sqrt(rnd());h+=`<ellipse cx="${(-120+Math.cos(a)*r*105).toFixed(1)}" cy="${(120+Math.sin(a)*r*82).toFixed(1)}" rx="7" ry="3" fill="${rnd()>.5?'#fffdf7':'#efe6d4'}" transform="rotate(${(rnd()*180).toFixed(0)} ${(-120+Math.cos(a)*r*105).toFixed(1)} ${(120+Math.sin(a)*r*82).toFixed(1)})"/>`;}
+ // fritas
+ for(let i=0;i<11;i++){const x=90+rnd()*120,y=90+rnd()*110,a=rnd()*180;h+=`<g transform="rotate(${a.toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"><rect x="${(x-60).toFixed(0)}" y="${(y-11).toFixed(0)}" width="120" height="22" rx="8" fill="#e9b14c"/><rect x="${(x-58).toFixed(0)}" y="${(y-9).toFixed(0)}" width="116" height="7" rx="4" fill="#f7d27c"/></g>`;}
+ // parmegiana: empanado, molho, queijo gratinado, manjericão
+ h+=`<path d="${bolha(10,-70,200,140,14,.14,11)}" fill="#b9732c"/><path d="${bolha(8,-76,188,128,14,.12,11)}" fill="#cf8a3a"/>`;
+ h+=`<path d="${bolha(6,-80,170,112,16,.18,5)}" fill="url(#mo)"/>`;
+ h+=`<path d="${bolha(2,-84,138,86,18,.35,21)}" fill="url(#qj)"/>`;
+ for(let i=0;i<18;i++){const x=-110+rnd()*220,y=-150+rnd()*130;h+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(4+rnd()*10).toFixed(0)}" fill="#c9782c" opacity="${(.35+rnd()*.4).toFixed(2)}"/>`;}
+ for(let i=0;i<8;i++){const x=-100+rnd()*200,y=-140+rnd()*110;h+=`<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(8+rnd()*12).toFixed(0)}" ry="${(5+rnd()*6).toFixed(0)}" fill="#fff6d0" opacity=".7"/>`;}
+ h+='<g filter="url(#lv)"><path d="M-30 -118 q34 -30 70 -4 q-34 26 -70 4z" fill="#3f7d3a"/><path d="M-30 -118 q34 -8 70 -4" stroke="#2e5e2a" stroke-width="3" fill="none"/><path d="M50 -60 q20 -34 58 -24 q-18 32 -58 24z" fill="#4a8c42"/></g>';
+ for(let i=0;i<30;i++){h+=`<circle cx="${(-140+rnd()*280).toFixed(0)}" cy="${(-170+rnd()*190).toFixed(0)}" r="2.5" fill="#2e5e2a" opacity=".7"/>`;}
+ return h;}
+// fumaça subindo
+const fumaca=(x,y,esc2=1)=>`<g class="fum" transform="translate(${x} ${y}) scale(${esc2})">${[-60,0,60].map((dx,k)=>`<path data-k="${k}" d="M${dx} 0 C${dx-30} -60 ${dx+30} -110 ${dx} -170 S${dx-30} -280 ${dx} -330" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="16" stroke-linecap="round" style="filter:blur(5px)"/>`).join('')}</g>`;
+// moto de entrega com baú da marca (ilustração própria)
+const moto=()=>`<g class="moto"><circle cx="-130" cy="70" r="58" fill="#1d1a17"/><circle cx="-130" cy="70" r="24" fill="#bdb6ab"/><circle cx="150" cy="70" r="58" fill="#1d1a17"/><circle cx="150" cy="70" r="24" fill="#bdb6ab"/>
+ <path d="M-190 40 Q-170 -30 -80 -30 L60 -30 Q120 -30 150 10 L190 40 Q140 20 110 40 L-40 40 Q-80 0 -130 10 Q-170 20 -190 40Z" fill="#b5121b"/>
+ <path d="M120 -30 L160 -130 L185 -130" stroke="#1d1a17" stroke-width="16" fill="none" stroke-linecap="round"/><rect x="-60" y="-50" width="120" height="22" rx="10" fill="#1d1a17"/>
+ <rect x="-210" y="-200" width="180" height="150" rx="16" fill="#1d1a17"/><rect x="-200" y="-190" width="160" height="130" rx="10" fill="#b5121b"/>
+ <text x="-120" y="-110" text-anchor="middle" font-family="Lora" font-style="italic" font-weight="700" font-size="46" fill="#fff">Savioli</text></g>`;
+
+const foto=(w,h,extra='')=>{const cw=330,ch=530,x0=608,y0=235;const s=Math.max(w/cw,h/ch);return 'background-image:url('+url('assets/ifood.jpg')+');background-size:'+(1080*s)+'px auto;background-position:'+(-x0*s+(w-cw*s)/2)+'px '+(-y0*s+(h-ch*s)/2)+'px;'+extra;};
+const fotoC=(w,h,r,extra='')=>{const [x0,y0,cw,ch]=r;const k=Math.max(w/cw,h/ch);return 'background-image:url('+url('assets/ifood.jpg')+');background-size:'+(1080*k)+'px auto;background-position:'+(-x0*k+(w-cw*k)/2)+'px '+(-y0*k+(h-ch*k)/2)+'px;'+extra;};
+function construir(){
+ let t=0;const st=$('stage');const cenas=P.cenas.filter(c=>c.tipo!=='pitch'||P.pitch);
+ cenas.forEach((c,i)=>{const a=t,b=t+c.dur;t=b;const el=document.createElement('div');el.id='S'+i;let h='';
+  if(c.tipo==='gancho'){el.className='S escuro';
+   h='<div class="abs zoom" style="inset:-60px;'+foto(1200,2040,'filter:blur(26px) saturate(1.25) brightness(.62)')+'"></div><div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(21,17,14,.35),rgba(21,17,14,.1) 45%,rgba(21,17,14,.55))"></div>'+
+    '<div class="abs center kick" style="top:640px">'+ln(esc(c.kicker),.1)+'</div>'+
+    '<div class="abs center T" style="top:720px;font-size:140px;color:#fff">'+ln(esc(c.titulo),.2)+'</div>'+
+    '<div class="abs center T I" style="top:880px;font-size:104px">'+ln(esc(c.destaque),.45)+'</div>';
+  }else if(c.tipo==='prato'){el.className='S creme';
+   h='<div class="xadrez" style="top:0;bottom:0;opacity:.85"></div><div class="abs" style="inset:0;background:radial-gradient(ellipse 70% 50% at 50% 55%,rgba(255,255,255,0) 30%,rgba(60,10,5,.35) 100%)"></div>'+
+    '<div class="abs center" style="top:230px;z-index:2"><div class="caixa" style="display:inline-block;background:var(--cream);padding:30px 60px 26px;border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.25)">'+
+     '<div class="T" style="font-size:80px">'+ln(esc(c.titulo),.2)+'</div><div class="T I" style="font-size:108px">'+ln(esc(c.destaque),.4)+'</div></div></div>'+
+    '<div class="abs print" style="left:250px;top:500px;width:580px;height:1040px;background:#fff;padding:18px 18px 70px;box-shadow:0 30px 60px rgba(0,0,0,.4)">'+
+     '<div class="zoom" style="width:544px;height:952px;'+foto(544,952)+'"></div></div>'+
+    '<div class="abs center pop" data-d=".9" style="top:1580px"><span class="tag">'+esc(c.etiqueta)+'</span></div>';
+  }else if(c.tipo==='horario'){el.className='S verm';
+   h=`<div class="xadrez" style="top:0;height:70px;opacity:.9"></div><div class="xadrez" style="bottom:0;height:70px;opacity:.9"></div>
+    <div class="abs center kick" style="top:540px">${ln(esc(c.kick||c.kicker),.05)}</div>
+    <div class="abs center T I" style="top:620px;font-size:120px">${ln(esc(c.dias),.2)}</div>
+    <div class="abs center pop" data-d=".6" style="top:880px"><div style="display:inline-block;background:#fff;color:var(--red);border-radius:24px;padding:40px 70px;box-shadow:0 24px 50px rgba(0,0,0,.3)">
+     <div style="font-family:Pop;font-weight:700;font-size:150px;line-height:1;letter-spacing:-.02em">${esc(c.hora)}</div></div></div>
+    <div class="abs center" style="top:1200px;font-family:Pop;font-weight:500;font-size:40px;opacity:.9">${ln(esc(c.obs),1.1)}</div>`;
+  }else if(c.tipo==='entrega'){el.className='S creme';
+   h='<div class="papel"></div><div class="xadrez" style="bottom:0;height:90px;opacity:.9"></div>'+
+    '<div class="abs center T" style="top:560px;font-size:112px">'+ln(esc(c.titulo),.1)+'</div>'+
+    '<div class="abs center T I" style="top:700px;font-size:130px">'+ln(esc(c.destaque),.3)+'</div>'+
+    '<div class="abs center" style="top:960px;font-family:Pop;font-weight:500;font-size:40px;color:var(--sub)">'+ln('Estamos no',.7)+'</div>'+
+    '<div class="abs center" style="top:1040px">'+['iFood','99Food'].map((x,j)=>'<span class="pop" data-d="'+(.9+j*.2)+'" style="display:inline-block;margin:0 16px;padding:26px 54px;border-radius:999px;border:4px solid var(--red);font-family:Pop;font-weight:700;font-size:56px;color:var(--red);background:#fff">'+x+'</span>').join('')+'</div>';
+  }else if(c.tipo==='mesa'){el.className='S creme';
+   const [A,B]=c.fotos;
+   h='<div class="xadrez" style="top:0;bottom:0;opacity:.85"></div><div class="abs" style="inset:0;background:radial-gradient(ellipse 70% 50% at 50% 55%,rgba(255,255,255,0) 30%,rgba(60,10,5,.35) 100%)"></div>'+
+    '<div class="abs center" style="top:230px;z-index:3"><div class="caixa" style="display:inline-block;background:var(--cream);padding:30px 60px 26px;border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.25)">'+
+     '<div class="T" style="font-size:80px">'+ln(esc(c.titulo),.2)+'</div><div class="T I" style="font-size:96px">'+ln(esc(c.destaque),.4)+'</div></div></div>'+
+    '<div class="abs print" data-d=".2" data-r="-5" style="left:90px;top:620px;width:560px;height:800px;background:#fff;padding:16px 16px 84px;box-shadow:0 30px 60px rgba(0,0,0,.4);z-index:1">'+
+     '<div class="zoom" style="width:528px;height:700px;'+fotoC(528,700,A.recorte)+'"></div><div class="leg">'+esc(A.legenda)+'</div></div>'+
+    '<div class="abs print" data-d=".75" data-r="6" style="left:560px;top:1000px;width:420px;height:640px;background:#fff;padding:16px 16px 84px;box-shadow:0 30px 60px rgba(0,0,0,.45);z-index:2">'+
+     '<div class="zoom" style="width:388px;height:540px;'+fotoC(388,540,B.recorte)+'"></div><div class="leg">'+esc(B.legenda)+'</div></div>';
+  }else if(c.tipo==='endereco'){el.className='S creme';
+   h='<div class="papel"></div><div class="xadrez" style="top:0;height:90px;opacity:.9"></div><div class="xadrez" style="bottom:0;height:90px;opacity:.9"></div>'+
+    '<div class="abs center kick" style="top:560px">'+ln(esc(c.kicker),.05)+'</div>'+
+    '<svg class="abs pino" style="left:490px;top:640px" width="100" height="140" viewBox="0 0 100 140"><path d="M50 136 C20 96 6 72 6 48 A44 44 0 0 1 94 48 C94 72 80 96 50 136Z" fill="#b5121b"/><circle cx="50" cy="48" r="17" fill="#f7f0e4"/></svg>'+
+    '<div class="abs center T" style="top:830px;font-size:80px">'+ln(esc(c.linha1),.35)+'</div>'+
+    '<div class="abs center T I" style="top:940px;font-size:104px">'+ln(esc(c.linha2),.55)+'</div>'+
+    '<div class="abs center" style="top:1120px"><span class="fio2" style="display:inline-block;width:0;height:4px;background:var(--red)"></span></div>';
+  }else if(c.tipo==='final'){el.className='S escuro';
+   h=`<div class="xadrez" style="bottom:0;height:120px;opacity:.95"></div>
+    <img class="abs lg" src="${url(P.marca.logo)}" style="left:50%;top:260px;width:720px;margin-left:-360px;mix-blend-mode:screen">
+    <div class="abs center T" style="top:860px;font-size:110px">${ln(esc(c.titulo),.4)}</div>
+    <div class="abs center T I" style="top:990px;font-size:110px">${ln(esc(c.destaque),.6)}</div>
+    <div class="abs center" style="top:1180px;font-family:Pop;font-weight:500;font-size:36px;opacity:.85">${ln(esc(P.marca.endereco),.9)}</div>
+    <div class="cta pop" data-d="1.1" style="top:1270px">LIGUE ${esc(P.marca.telefone)}<div class="sh"></div></div>
+    <div class="abs center" style="top:1450px;font-family:Pop;font-weight:500;font-size:32px;letter-spacing:.1em;color:#ff8a8e">${ln(esc(P.marca.instagram),1.4)}</div>`;
+  }else if(c.tipo==='pitch'){el.className='S pkdd';
+   h=`<div class="abs" style="left:-300px;top:-200px;width:1000px;height:1000px;background:radial-gradient(circle,rgba(34,211,238,.2),transparent 62%)"></div>
+    <div class="abs center mono" style="top:360px;font-size:28px;color:#67e8f9;letter-spacing:.25em">${ln('// VÍDEO DEMONSTRATIVO — PKDD',.1)}</div>
+    <div class="abs" style="left:90px;right:90px;top:470px;text-align:center;font-size:58px;font-weight:500;line-height:1.3">${c.linhas.map((l,j)=>ln(esc(l),.3+j*.2)).join('')}</div>
+    <div class="abs" style="left:90px;right:90px;top:720px;text-align:center;font-size:62px;font-weight:700;line-height:1.25;color:#a5f3fc">${ln(esc(c.destaque),1.3)}</div>
+    <div class="abs center pop" data-d="2.3" style="top:1000px"><span style="display:inline-block;padding:34px 70px;border-radius:20px;background:linear-gradient(90deg,#06b6d4,#6366f1 60%,#c026d3);font-size:64px;font-weight:700;box-shadow:0 0 40px rgba(99,102,241,.6)">🎥 ${esc(c.chamada)}</span></div>`;
+  }
+  el.innerHTML=h;st.appendChild(el);SEQ.push({c,el,a,b});
+ });
+ window.DURACAO=t;
+}
+function anim(s,lt){const el=s.el;
+ el.querySelectorAll('.r').forEach(x=>{const d=+x.dataset.d,p=eQ(seg(lt,d,d+.7));x.style.transform=`translateY(${(1-p)*110}%)`;});
+ el.querySelectorAll('.pop').forEach(x=>{const d=+x.dataset.d,p=eBack(seg(lt,d,d+.5));x.style.opacity=cl(seg(lt,d,d+.15));x.style.transform=(x.classList.contains('cta')?'translateX(-50%) ':'')+`scale(${lerp(.6,1,p)})`;
+  const sh=x.querySelector('.sh');if(sh)sh.style.left=`${lerp(-240,900,eIO((((lt-d-.6)%2)+2)%2))}px`;});
+ el.querySelectorAll('.caixa').forEach(x=>{const p=eBack(seg(lt,.1,.6));x.style.transform=`scale(${lerp(.8,1,p)}) rotate(-2deg)`;});
+ el.querySelectorAll('.fum path').forEach(f=>{const k=+f.dataset.k;const q=((lt*.55+k*.33)%1);f.style.opacity=Math.sin(q*Math.PI)*.8;f.style.transform=`translateY(${-q*120}px) scaleX(${1+q*.3})`;});
+ el.querySelectorAll('.zoom').forEach(x=>{x.style.transform='scale('+(1.08-.08*eSine(seg(lt,0,4)))+')';});
+ el.querySelectorAll('.print').forEach(x=>{const d=+(x.dataset.d||.15),rr=+(x.dataset.r||-3);const p=eQ(seg(lt,d,d+.85));x.style.opacity=cl(seg(lt,d,d+.3));x.style.transform='translateY('+((1-p)*60)+'px) rotate('+lerp(rr*-.4,rr,p)+'deg)';});
+ el.querySelectorAll('.pino').forEach(x=>{const p=eBack(seg(lt,.15,.7));x.style.opacity=cl(seg(lt,.15,.3));x.style.transform='translateY('+((1-p)*-80)+'px)';});
+ el.querySelectorAll('.fio2').forEach(x=>{x.style.width=(260*eQ(seg(lt,.8,1.5)))+'px';});
+ el.querySelectorAll('.lg').forEach(x=>{const p=eQ(seg(lt,.05,.9));x.style.opacity=p;x.style.transform=`scale(${lerp(.9,1,p)})`;});
+}
+const T=.6;
+window.render=async function(t){
+ let i=SEQ.findIndex(s=>t>=s.a&&t<s.b);if(i<0)i=SEQ.length-1;const cur=SEQ[i],prev=SEQ[i-1];const lt=t-cur.a;
+ SEQ.forEach(s=>{s.el.style.visibility='hidden';s.el.style.zIndex=1;});const to=$('toalha');to.style.visibility='hidden';
+ cur.el.style.visibility='visible';cur.el.style.zIndex=2;anim(cur,lt);
+ // troca de cena: dissolve suave, a nova sobe de leve
+ if(prev&&lt<T){const p=eSine(seg(lt,0,T));prev.el.style.visibility='visible';anim(prev,prev.b-prev.a+lt);prev.el.style.opacity=1;cur.el.style.opacity=p;cur.el.style.transform='translateY('+((1-p)*24)+'px)';}
+ else{cur.el.style.opacity=1;cur.el.style.transform='none';}
+};
+window.CORTES=()=>SEQ.slice(1).map(s=>s.a);
+window.ready=fetch(`${PROJ}/projeto.json`).then(r=>r.json()).then(j=>{P=j;construir();
+ return Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));}).then(()=>document.fonts.ready).then(()=>({duracao:window.DURACAO,videos:[],cortes:window.CORTES()}));
+</script></body></html>

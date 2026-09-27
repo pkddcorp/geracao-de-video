@@ -1,0 +1,16 @@
+{
+ "marca": { "nome": "Hioki Sushi Itu", "logo": "assets/logo.png", "instagram": "@hiokiitu", "endereco": "Praça Lions, 88 · Itu" },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "tomada", "dur": 2.4, "arquivo": "assets/salmao-pedra.jpg", "de": [0.55, 0.58, 0.44], "para": [0.5, 0.6, 0.56], "texto": "Salmão fresco." },
+  { "tipo": "tomada", "dur": 2.2, "arquivo": "assets/niguiri.jpg", "de": [0.3, 0.7, 0.42], "para": [0.7, 0.64, 0.42], "texto": "Ovas selecionadas." },
+  { "tipo": "tomada", "dur": 2.4, "arquivo": "assets/espetaculo.jpg", "de": [0.5, 0.3, 0.74], "para": [0.5, 0.76, 0.62], "texto": "Apresentação impecável." },
+  { "tipo": "video", "dur": 2.8, "arquivo": "assets/barco.mp4", "texto": "O mais completo rodízio da região." },
+  { "tipo": "tomada", "dur": 2.0, "arquivo": "assets/temaki2.jpg", "de": [0.5, 0.45, 0.66], "para": [0.5, 0.42, 0.52], "texto": "Delivery, rodízio\ne à la carte." },
+  { "tipo": "tomada", "dur": 2.0, "arquivo": "assets/temaki3.jpg", "de": [0.6, 0.55, 0.7], "para": [0.68, 0.6, 0.56], "texto": "Todos os dias." },
+  { "tipo": "tomada", "dur": 2.0, "arquivo": "assets/drink.jpg", "de": [0.5, 0.6, 0.74], "para": [0.5, 0.64, 0.6], "texto": "E drinks da casa." },
+  { "tipo": "final", "dur": 4.0, "botao": "PEÇA PELO DELIVERY", "linha": "ou venha comer com a gente" },
+  { "tipo": "pitch", "dur": 5.0,
+    "linhas": ["Vocês já têm fotos incríveis.", "Faltava movimento."], "destaque": "Imagina isso toda semana no perfil de vocês.", "chamada": "BORA?" }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "marca": {
+  "nome": "Restaurante Savioli",
+  "logo": "assets/logo.png",
+  "instagram": "@restaurantesavioliitu",
+  "telefone": "(11) 4024-3366",
+  "endereco": "Rua Márcia Pierroni, 03 · Itu Novo Centro"
+ },
+ "pitch": true,
+ "cenas": [
+  { "tipo": "gancho", "dur": 2.8, "kicker": "Itu Novo Centro", "titulo": "Bateu a fome", "destaque": "na hora do almoço?" },
+  { "tipo": "prato", "dur": 3.4, "titulo": "Olha essa", "destaque": "parmegiana", "etiqueta": "Restaurante Savioli" },
+  { "tipo": "horario", "dur": 3.0, "kicker": "Almoço de", "dias": "terça a domingo", "hora": "11h às 15h30", "obs": "Segunda: fechado" },
+  { "tipo": "entrega", "dur": 3.0, "titulo": "Não dá pra vir?", "destaque": "Peça em casa", "texto": "Estamos no **iFood** e no **99Food**" },
+  { "tipo": "final", "dur": 4.2, "titulo": "Te esperamos", "destaque": "pro almoço!" },
+  { "tipo": "pitch", "dur": 5.0,
+    "linhas": ["Esse vídeo foi feito só com", "o que já existe no seu Instagram."],
+    "destaque": "Imagina com o seu salão, seus pratos e sua equipe.", "chamada": "BORA GRAVAR?" }
+ ]
+}

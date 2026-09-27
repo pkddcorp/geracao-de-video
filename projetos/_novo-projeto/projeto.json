@@ -1,0 +1,14 @@
+{
+  "marca": {
+    "nome": "Nome do cliente",
+    "logo": "assets/logo.png",
+    "instagram": "@cliente",
+    "faixa_italia": false,
+    "cores": { "fundo1": "#fbf6ec", "fundo2": "#ede2d0", "texto": "#1c2b45", "destaque": "#b8912a", "destaque_claro": "#e6c86e", "destaque_escuro": "#8a6b1f" }
+  },
+  "cenas": [
+    { "tipo": "abertura", "dur": 2.8, "kicker": "Novidade", "titulo": "Título", "destaque": "em destaque." },
+    { "tipo": "midia", "dur": 2.6, "itens": [ { "arquivo": "assets/foto1.jpg" } ] },
+    { "tipo": "final", "dur": 3.6, "titulo": "Nome", "destaque": "da marca", "texto": "a partir de **R$ 00,00**", "botao": "CHAME NO WHATSAPP" }
+  ]
+}

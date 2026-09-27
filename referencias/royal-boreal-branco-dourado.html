@@ -1,0 +1,162 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#faf8f3;font-family:Poppins,sans-serif;color:#1a1714}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;opacity:0}
+.serif{font-family:Lora,serif;font-weight:400}
+.center{left:0;right:0;text-align:center}
+.kick{font-size:30px;letter-spacing:.38em;text-transform:uppercase;color:#a8842a;font-weight:500;padding-left:.38em}
+.ln{overflow:hidden;display:block;padding-bottom:.08em}
+.ln>span{display:inline-block;will-change:transform}
+.gold{background:linear-gradient(100deg,#8a6b1f 0%,#b8912a 30%,#e6c86e 48%,#b8912a 66%,#8a6b1f 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.bottle{position:absolute;transform-origin:50% 100%}
+.bottle img{display:block;height:100%;width:auto;-webkit-box-reflect:below 2px linear-gradient(transparent 72%,rgba(255,255,255,.28))}
+.shadow{position:absolute;height:40px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(60,45,20,.28),rgba(60,45,20,0) 70%)}
+.rule{position:absolute;height:2px;background:linear-gradient(90deg,rgba(184,145,42,0),#b8912a,rgba(184,145,42,0));transform-origin:50% 50%}
+.item{position:absolute;top:0;width:520px;height:1920px}
+.lab{position:absolute;left:0;right:0;top:1310px;text-align:center}
+.lab .b{font-size:26px;letter-spacing:.32em;text-transform:uppercase;color:#a8842a;font-weight:500}
+.lab .n{font-family:Lora,serif;font-size:66px;margin-top:6px}
+.lab .p{font-size:34px;color:#6f675b;margin-top:8px;font-weight:300}
+.lab .p b{color:#1a1714;font-weight:600}
+.col{position:absolute;top:1170px;width:300px;text-align:center}
+.col .ic{font-family:Lora,serif;font-size:60px;color:#b8912a;line-height:1}
+.col h4{font-size:38px;font-weight:500;margin-top:18px;line-height:1.25}
+.col p{font-size:30px;color:#6f675b;font-weight:300;margin-top:8px;line-height:1.35}
+.vsep{position:absolute;top:1180px;width:1px;height:190px;background:rgba(184,145,42,.45);transform-origin:50% 0}
+.cta{position:absolute;left:50%;padding:36px 78px;border-radius:999px;background:#1a1714;color:#f6efdc;font-size:40px;letter-spacing:.18em;font-weight:500;white-space:nowrap;overflow:hidden;box-shadow:0 18px 50px rgba(60,45,20,.22)}
+.cta em{font-style:normal;color:#e0c26a}
+.cta .sh{position:absolute;top:0;bottom:0;width:160px;background:linear-gradient(100deg,transparent,rgba(255,240,200,.35),transparent);transform:skewX(-20deg)}
+</style></head><body>
+<div id="stage">
+ <div class="abs" style="inset:0;background:linear-gradient(180deg,#fdfcf8 0%,#f7f3ea 60%,#efe8d9 100%)"></div>
+ <div class="abs" id="glow" style="width:1400px;height:1400px;border-radius:50%;background:radial-gradient(circle,rgba(230,200,110,.28),rgba(230,200,110,0) 60%)"></div>
+ <div class="abs" id="frame" style="inset:44px;border:1.5px solid rgba(184,145,42,.35)"></div>
+
+ <!-- S1 -->
+ <div class="scene" id="s1">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k1">Importados originais</span></span></div>
+  <div class="abs center serif" style="top:370px;font-size:112px;line-height:1.08">
+   <span class="ln"><span id="a1">Seu favorito,</span></span>
+   <span class="ln"><span id="a2">por menos de</span></span>
+  </div>
+  <div class="abs center serif" style="top:600px;font-size:200px;line-height:1;font-style:italic"><span class="ln"><span id="a3" class="gold">R$ 80</span></span></div>
+  <div class="shadow" id="sh1" style="top:1482px;left:340px;width:400px"></div>
+  <div class="bottle" id="bt1" style="top:870px;height:620px;left:540px"><img src="fotos/sauvage-dior.png"></div>
+ </div>
+
+ <!-- S2 -->
+ <div class="scene" id="s2">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k2">Os mais pedidos</span></span></div>
+  <div class="abs center serif" style="top:360px;font-size:92px;line-height:1.1">
+   <span class="ln"><span id="b1">Os clássicos que você</span></span>
+   <span class="ln"><span id="b2">já conhece, em <i class="gold">5ml</i></span></span>
+  </div>
+  <div id="row" class="abs" style="left:0;top:0;height:1920px"></div>
+ </div>
+
+ <!-- S3 -->
+ <div class="scene" id="s3">
+  <div class="abs center kick" style="top:300px"><span class="ln"><span id="k3">Como funciona</span></span></div>
+  <div class="abs center serif" style="top:350px;font-size:330px;line-height:1;font-style:italic"><span class="ln"><span id="c1" class="gold">5ml</span></span></div>
+  <div class="abs center serif" style="top:730px;font-size:70px;line-height:1.2">
+   <span class="ln"><span id="c2">Tirados do frasco original,</span></span>
+   <span class="ln"><span id="c3">no tamanho certo pra testar.</span></span>
+  </div>
+  <div class="rule" id="r3" style="top:1020px;left:240px;width:600px"></div>
+  <div class="col" id="q1" style="left:40px"><div class="ic">✦</div><h4>100% originais</h4><p>De frascos<br>lacrados</p></div>
+  <div class="vsep" id="v1" style="left:360px"></div>
+  <div class="col" id="q2" style="left:390px"><div class="ic">✦</div><h4>Todo o Brasil</h4><p>Correios<br>ou retirada</p></div>
+  <div class="vsep" id="v2" style="left:720px"></div>
+  <div class="col" id="q3" style="left:740px"><div class="ic">✦</div><h4>Atendimento</h4><p>Direto pelo<br>WhatsApp</p></div>
+ </div>
+
+ <!-- S4 -->
+ <div class="scene" id="s4">
+  <div class="abs" id="crest" style="left:50%;top:330px;width:200px;margin-left:-100px">
+   <svg viewBox="0 0 64 76" width="200" height="238"><defs><linearGradient id="g" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="#e0c26a"/><stop offset="45%" stop-color="#b8912a"/><stop offset="100%" stop-color="#8a6b1f"/></linearGradient></defs>
+   <path id="cp1" d="M4 4h56v40c0 14-12 22-28 28C16 66 4 58 4 44V4Z" fill="none" stroke="url(#g)" stroke-width="2.4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+   <path id="cp2" d="M11 11h42v32c0 10.5-8.6 16.8-21 21.4C19.6 59.8 11 53.5 11 43V11Z" fill="none" stroke="url(#g)" stroke-width="1" opacity=".6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+   <text id="crb" x="32" y="42" text-anchor="middle" font-family="Lora,serif" font-size="24" letter-spacing="1" fill="url(#g)" opacity="0">RB</text></svg>
+  </div>
+  <div class="abs center serif" style="top:620px;font-size:96px;letter-spacing:.22em;padding-left:.22em"><span class="ln"><span id="d1">ROYAL BOREAL</span></span></div>
+  <div class="rule" id="r4" style="top:760px;left:390px;width:300px"></div>
+  <div class="abs center" style="top:800px;font-size:40px;color:#6f675b;font-weight:300;line-height:1.45">
+   <span class="ln"><span id="d2">Importados originais a partir de <b style="color:#1a1714;font-weight:600">R$ 47,90</b></span></span></div>
+  <div class="cta" id="cta" style="top:950px">PEÇA PELO <em>WHATSAPP</em><div class="sh" id="ctash"></div></div>
+  <div class="abs center kick" style="top:1120px;font-size:28px;color:#6f675b"><span class="ln"><span id="d3">@royal_boreal</span></span></div>
+  <div id="trio"></div>
+ </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5);          // easeOutQuint
+const eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+const eSine=p=>-(Math.cos(Math.PI*p)-1)/2;
+const lerp=(a,b,p)=>a+(b-a)*p;
+const S=[['s1',0,3.5],['s2',3.5,8.1],['s3',8.1,11.5],['s4',11.5,15]];
+
+const ITEMS=[['bleu-de-chanel','Chanel','Bleu de Chanel','69,90'],['one-million','Paco Rabanne','1 Million','54,90'],
+ ['eros-versace','Versace','Eros','49,90'],['good-girl','Carolina Herrera','Good Girl','69,90'],['scandal-le-parfum','Jean Paul Gaultier','Scandal','76,90']];
+const SP=520,row=$('row');
+ITEMS.forEach((it,i)=>{const d=document.createElement('div');d.className='item';d.style.left=(i*SP)+'px';
+ d.innerHTML=`<div class="shadow" style="top:1262px;left:90px;width:340px"></div>
+ <div class="bottle" style="top:740px;height:530px;left:260px"><img src="fotos/${it[0]}.png"></div>
+ <div class="lab"><div class="b">${it[1]}</div><div class="n">${it[2]}</div><div class="p">5ml · <b>R$ ${it[3]}</b></div></div>`;row.appendChild(d);});
+const TRIO=[['bleu-de-chanel',-260],['sauvage-dior',0],['scandal-le-parfum',260]];
+TRIO.forEach(([f,dx],i)=>{const d=document.createElement('div');d.innerHTML=`<div class="shadow" style="top:${i==1?1692:1672}px;left:${540+dx-130}px;width:260px"></div>
+ <div class="bottle" style="top:${i==1?1340:1360}px;height:${i==1?360:320}px;left:${540+dx}px"><img src="fotos/${f}.png"></div>`;$('trio').appendChild(d);});
+
+// centraliza garrafas pela largura real
+function center(){document.querySelectorAll('.bottle').forEach(b=>{b.dataset.x=b.style.left;b.style.marginLeft=(-b.querySelector('img').getBoundingClientRect().width/2)+'px';});}
+
+const rev=(id,t,st,d=.9)=>{const p=eQ(seg(t,st,st+d));$(id).style.transform=`translateY(${(1-p)*110}%)`;};
+
+window.render=function(t){
+ $('glow').style.transform=`translate(${-160+Math.sin(t*.35)*60}px,${260+Math.cos(t*.3)*50}px)`;
+ S.forEach(([id,a,b],i)=>{const inP=i==0?1:eSine(seg(t,a,a+.55));const outP=i==S.length-1?0:eSine(seg(t,b-.45,b));
+  const el=$(id);el.style.opacity=Math.min(inP,1-outP);el.style.transform=`translateY(${-outP*40}px) scale(${1+.015*seg(t,a,b)})`;el.style.visibility=(t<a-.01||t>b+.01)?'hidden':'visible';});
+
+ // S1
+ rev('k1',t,0,.8);rev('a1',t,.15);rev('a2',t,.35);rev('a3',t,.6,1.1);
+ $('a3').style.backgroundPosition=`${lerp(100,0,eIO(seg(t,.9,2.6)))}% 0`;
+ const b1=eQ(seg(t,0,1.6));
+ $('bt1').style.transform=`translateY(${(1-b1)*60+Math.sin(t*1.2)*6}px) scale(${lerp(1.04,1,b1)})`;
+ $('bt1').style.opacity=1;
+ $('sh1').style.opacity=b1;
+
+ // S2
+ const t2=t-3.5;
+ rev('k2',t2,.15,.8);rev('b1',t2,.25);rev('b2',t2,.4);
+ const lt=Math.max(0,(t2-.25)/.85);const idx=Math.min(ITEMS.length-1,Math.floor(lt));const fr=idx>=ITEMS.length-1?0:eIO(cl((lt-idx-.45)/.55));const cx=(idx+fr)*SP;
+ row.style.transform=`translateX(${540-SP/2-cx}px)`;
+ [...row.children].forEach((c,i)=>{const d=Math.abs(i*SP-cx)/SP;const k=cl(1-d);
+  c.querySelector('.bottle').style.transform=`scale(${lerp(.78,1,eSine(k))})`;
+  c.style.opacity=eSine(cl((1.1-d)/1.1))*cl(seg(t2,.1+i*.05,.8+i*.05)*1);
+  c.querySelector('.lab').style.opacity=eSine(cl((k-.7)/.3));
+  c.querySelector('.lab').style.transform=`translateY(${(1-k)*20}px)`;});
+
+ // S3
+ const t3=t-8.1;
+ rev('k3',t3,.1,.8);rev('c1',t3,.15,1.1);rev('c2',t3,.5);rev('c3',t3,.68);
+ $('c1').style.backgroundPosition=`${lerp(100,0,eIO(seg(t3,.4,2.2)))}% 0`;
+ const rp=eQ(seg(t3,.9,1.8));$('r3').style.transform=`scaleX(${rp})`;
+ ['q1','q2','q3'].forEach((q,i)=>{const p=eQ(seg(t3,1.1+i*.18,2.0+i*.18));$(q).style.opacity=p;$(q).style.transform=`translateY(${(1-p)*40}px)`;});
+ ['v1','v2'].forEach((v,i)=>{$(v).style.transform=`scaleY(${eQ(seg(t3,1.3+i*.18,2.2+i*.18))})`;});
+
+ // S4
+ const t4=t-11.5;
+ $('cp1').setAttribute('stroke-dashoffset',1-eIO(seg(t4,.05,1.3)));$('cp2').setAttribute('stroke-dashoffset',1-eIO(seg(t4,.3,1.5)));
+ $('crb').setAttribute('opacity',eSine(seg(t4,.8,1.5)));
+ rev('d1',t4,.55,1);$('r4').style.transform=`scaleX(${eQ(seg(t4,.9,1.8))})`;rev('d2',t4,1.0);
+ const cp=eQ(seg(t4,1.3,2.1));$('cta').style.opacity=cp;$('cta').style.transform=`translateX(-50%) translateY(${(1-cp)*30}px)`;
+ $('ctash').style.left=`${lerp(-220,760,eIO(seg(t4,2.1,3.0)))}px`;
+ rev('d3',t4,1.6,.8);
+ [...$('trio').children].forEach((c,i)=>{const p=eQ(seg(t4,.6+i*.15,1.9+i*.15));c.style.opacity=p;c.style.transform=`translateY(${(1-p)*50}px)`;});
+};
+window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(center);
+</script></body></html>

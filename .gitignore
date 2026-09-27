@@ -1,0 +1,27 @@
+# dependências e temporários
+node_modules/
+**/.cache/
+**/previa/
+
+# vídeos e mídia (pesados / conteúdo dos clientes)
+**/saida/
+**/referencia-insta/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+projetos/*/assets/*.jpg
+projetos/*/assets/*.jpeg
+projetos/*/assets/*.webp
+
+# fontes da Microsoft (licença não permite redistribuir) — copiar de C:\Windows\Fonts
+**/bahnschrift.ttf
+**/consola.ttf
+**/rockb.ttf
+**/seguibl.ttf
+**/impact.ttf
+
+# fotos de clientes em png
+projetos/personale-3d/assets/jose.png
+projetos/personale-3d/assets/nomes.png

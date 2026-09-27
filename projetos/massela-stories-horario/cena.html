@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- MASSELA — Stories estático "Horário". Identidade Massela (Bahnschrift condensada, azul + amarelo sinalização + placa).
+     Um layout só: cartão branco com telhado (a casa do logo) segurando o horário. Entrada curta e depois só movimento sutil. -->
+<style>
+@font-face{font-family:Din;src:url(assets/fontes/bahnschrift.ttf);font-weight:300 700;font-stretch:75% 100%}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+:root{--azul:#15277a;--azul2:#0d1a5c;--amar:#f4b31a;--sub:#5a6479}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Din,sans-serif;color:#fff;background:linear-gradient(180deg,#18298a 0%,var(--azul2) 100%)}
+.grade{position:absolute;inset:-90px;background-image:linear-gradient(rgba(255,255,255,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.045) 2px,transparent 2px);background-size:90px 90px}
+.abs{position:absolute}.center{left:0;right:0;text-align:center}
+.cond{font-stretch:75%;font-weight:700;text-transform:uppercase}
+.ln{overflow:hidden;display:block;padding:.16em 0 .04em;margin-top:-.16em}.ln>span{display:inline-block}
+.placa{display:inline-block;position:relative;background:var(--amar);color:var(--azul2);padding:.17em .22em .06em}
+.placa::after{content:'';position:absolute;right:-1px;top:-1px;width:.34em;height:.12em;background:#fff}
+.lgp{position:absolute;left:50%;top:210px;width:300px;margin-left:-170px;background:#fff;border-radius:14px;padding:18px 24px 14px;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.lgp img{width:100%;display:block}
+#casa{position:absolute;left:110px;right:110px;top:780px}
+#casa svg{display:block;width:100%;overflow:visible}
+.card{background:#fff;color:var(--azul);box-shadow:0 40px 80px rgba(0,0,0,.35)}
+.row{padding:34px 60px 30px;text-align:center}
+.row .d{font-size:34px;letter-spacing:.24em;font-weight:600;font-stretch:85%;color:var(--sub)}
+.row .d .sq{width:16px;height:16px;background:var(--amar);display:inline-block;margin-right:16px;vertical-align:.1em}
+.row .h{font-size:132px;line-height:1;margin-top:8px}
+.row .h small{text-transform:none;font-size:.45em;color:var(--sub);margin:0 .2em;vertical-align:.25em}
+.sep{height:0;border-top:3px dashed rgba(21,39,122,.18);margin:0 60px}
+.end{background:var(--azul);color:#fff;font-size:28px;letter-spacing:.06em;padding:22px 20px;text-align:center}
+.cta{position:absolute;left:50%;top:1565px;padding:30px 54px;border-radius:12px;background:var(--amar);color:var(--azul2);font-size:46px;letter-spacing:.04em;font-weight:700;font-stretch:85%;white-space:nowrap;overflow:hidden;box-shadow:0 12px 0 #081140,0 30px 50px rgba(0,0,0,.3);display:flex;align-items:center;gap:22px}
+.cta .sh{position:absolute;top:0;bottom:0;width:160px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg)}
+</style></head><body>
+<div id="stage">
+ <div class="grade" id="grade"></div>
+ <div class="lgp up" data-d="0"><img id="logo" src="assets/logo.png"></div>
+ <div class="abs center cond" style="top:450px;font-size:180px;line-height:.95">
+  <span class="ln"><span class="r" data-d=".2">Horário</span></span>
+  <span class="ln" style="font-size:86px"><span class="r pl" data-d=".45"><span class="placa">de funcionamento</span></span></span>
+ </div>
+ <div id="casa" class="up" data-d=".7">
+  <svg viewBox="0 0 860 150" preserveAspectRatio="none" height="150"><polygon points="0,150 430,8 860,150" fill="#fff"/>
+   <polyline id="roof" points="-20,156 430,4 880,156" fill="none" stroke="#f4b31a" stroke-width="22" stroke-linejoin="miter" stroke-dasharray="1000"/></svg>
+  <div class="card">
+   <div class="row"><div class="d"><span class="sq"></span>SEGUNDA A SEXTA</div><div class="h cond">7h <small>às</small> 17h30</div></div>
+   <div class="sep"></div>
+   <div class="row"><div class="d"><span class="sq"></span>SÁBADO</div><div class="h cond">7h <small>às</small> 11h30</div></div>
+   <div class="end">Rua Cristóvão Diniz, 160 · Jd. do Estádio · Itu – SP</div>
+  </div>
+ </div>
+ <div class="cta up" data-d="1.2">WHATSAPP (11) 99566-6038<div class="sh"></div></div>
+ <div class="abs center" style="top:1725px;font-size:32px;letter-spacing:.24em;font-weight:600;opacity:.8"><span class="ln"><span class="r" data-d="1.5">@DEPOSITOMASSELA</span></span></div>
+</div>
+<script>
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>cl((t-a)/(b-a));
+const eQ=p=>1-Math.pow(1-p,5),eIO=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+const lerp=(a,b,p)=>a+(b-a)*p;
+const DUR=10;
+window.render=async function(t){
+ document.querySelectorAll('.r').forEach(x=>{const d=+x.dataset.d;
+  if(x.classList.contains('pl')){const w=eQ(seg(t,d,d+.6));x.querySelector('.placa').style.clipPath=`inset(-40% ${(1-w)*100}% -10% -5%)`;}
+  else x.style.transform=`translateY(${(1-eQ(seg(t,d,d+.7)))*110}%)`;});
+ document.querySelectorAll('.up').forEach(x=>{const d=+x.dataset.d,p=eQ(seg(t,d,d+.9));x.style.opacity=cl(seg(t,d,d+.3));
+  const base=x.classList.contains('cta')||x.classList.contains('lgp')?'translateX(-50%) ':'';
+  // depois da entrada: respiração bem leve do cartão
+  const br=x.id==='casa'?1+.018*eIO(seg(t,1.8,DUR)):1;
+  x.style.transform=base+`translateY(${(1-p)*70}px) scale(${br})`;});
+ document.querySelector('.lgp').style.marginLeft='0';
+ document.getElementById('roof').style.strokeDashoffset=1000*(1-eIO(seg(t,.9,1.9)));
+ const sh=document.querySelector('.sh');const k=(t-2.2)%3;sh.style.left=`${lerp(-220,980,eIO(cl(k/1.1)))}px`;
+ document.getElementById('grade').style.transform=`translateY(${-t*4}px)`;
+};
+window.ready=Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>document.fonts.ready).then(()=>({duracao:DUR,videos:[],cortes:[]}));
+</script></body></html>
